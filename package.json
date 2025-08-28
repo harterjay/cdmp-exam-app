@@ -1,8 +1,5 @@
 {
   "name": "cdmp-exam-app",
   "version": "1.0.0",
-  "description": "CDMP Exam Study Application",
-  "scripts": {
-    "build": "echo 'Static site - no build required'"
-  }
+  "description": "CDMP Exam Study Application"
 }
