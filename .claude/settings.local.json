@@ -10,7 +10,10 @@
       "Bash(copy main.html main_with_db_backup.html)",
       "Bash(curl:*)",
       "Bash(sed:*)",
-      "Bash(move basic_test.html archive)"
+      "Bash(move basic_test.html archive)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

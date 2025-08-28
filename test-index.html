@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDMP Exam Study App - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .status {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .info {
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
+            color: #0d47a1;
+        }
+    </style>
+</head>
+<body>
+    <h1>CDMP Exam Study App</h1>
+    
+    <div class="status success">
+        ✅ Vercel deployment successful!
+    </div>
+    
+    <div class="status info">
+        🚀 This is a test deployment to verify the setup works.
+    </div>
+    
+    <p>If you can see this page, your Vercel deployment is working correctly.</p>
+    
+    <p><strong>Next step:</strong> We'll deploy the full application with the database.</p>
+    
+    <hr style="margin: 40px 0;">
+    
+    <h2>Test Database Loading</h2>
+    <p>Testing if we can load the SQLite database...</p>
+    
+    <div id="dbStatus">Loading...</div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <script>
+        async function testDatabase() {
+            try {
+                const SQL = await initSqlJs({
+                    locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+                });
+                
+                const response = await fetch('cdmp_questions_full_exam_clean.db');
+                if (!response.ok) {
+                    throw new Error(`Database not found: ${response.status}`);
+                }
+                
+                const dbBuffer = await response.arrayBuffer();
+                const db = new SQL.Database(new Uint8Array(dbBuffer));
+                
+                const stmt = db.prepare("SELECT COUNT(*) as count FROM questions");
+                stmt.step();
+                const result = stmt.getAsObject();
+                stmt.free();
+                
+                document.getElementById('dbStatus').innerHTML = `
+                    <div class="status success">
+                        ✅ Database loaded successfully!<br>
+                        Found ${result.count} questions in database.
+                    </div>
+                `;
+                
+            } catch (error) {
+                document.getElementById('dbStatus').innerHTML = `
+                    <div class="status" style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24;">
+                        ❌ Database error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+        
+        testDatabase();
+    </script>
+</body>
+</html>

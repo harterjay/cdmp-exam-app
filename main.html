@@ -457,6 +457,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label># Questions:</label>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <input type="number" id="questionCount" min="1" max="200" value="20" style="width: 80px; padding: 8px; border: 2px solid #e9ecef; border-radius: 4px; font-size: 1em;">
+                        <span style="color: #666; font-size: 0.9em;">questions (1-200)</span>
+                    </div>
+                    <p style="color: #666; font-size: 0.9em; margin: 0;">
+                        If no chapters are selected, questions will be randomly chosen from all chapters. 
+                        If chapters are selected, questions will be randomly chosen from only those chapters.
+                    </p>
+                </div>
+
+                <div class="form-group">
                     <label>Study Mode:</label>
                     <div class="mode-selection">
                         <div class="mode-option" id="practiceMode">
@@ -653,6 +665,18 @@
                 </div>
 
                 <div class="form-group">
+                    <label># Questions:</label>
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+                        <input type="number" id="questionCount" min="1" max="200" value="20" style="width: 80px; padding: 8px; border: 2px solid #e9ecef; border-radius: 4px; font-size: 1em;">
+                        <span style="color: #666; font-size: 0.9em;">questions (1-200)</span>
+                    </div>
+                    <p style="color: #666; font-size: 0.9em; margin: 0;">
+                        If no chapters are selected, questions will be randomly chosen from all chapters. 
+                        If chapters are selected, questions will be randomly chosen from only those chapters.
+                    </p>
+                </div>
+
+                <div class="form-group">
                     <label>Study Mode:</label>
                     <div class="mode-selection">
                         <div class="mode-option" id="practiceMode">
@@ -727,6 +751,50 @@
             
             // Setup restart button
             document.getElementById('restartBtn').addEventListener('click', restartQuiz);
+            
+            // Setup question count validation
+            const questionCountInput = document.getElementById('questionCount');
+            if (questionCountInput) {
+                questionCountInput.addEventListener('blur', validateQuestionCount);
+                questionCountInput.addEventListener('input', validateQuestionCount);
+            }
+        }
+        
+        function validateQuestionCount() {
+            const input = document.getElementById('questionCount');
+            const value = parseInt(input.value);
+            
+            if (isNaN(value) || value < 1 || value > 200) {
+                input.value = 20; // Reset to default
+                showQuestionCountError('Please enter a number between 1 and 200');
+            } else {
+                hideQuestionCountError();
+            }
+        }
+        
+        function showQuestionCountError(message) {
+            // Remove existing error message
+            hideQuestionCountError();
+            
+            // Create new error message
+            const errorDiv = document.createElement('div');
+            errorDiv.id = 'questionCountError';
+            errorDiv.style.cssText = 'color: #dc3545; font-size: 0.85em; margin-top: 5px; padding: 5px 8px; background: #f8d7da; border: 1px solid #f5c6cb; border-radius: 4px;';
+            errorDiv.textContent = message;
+            
+            // Insert after the question count input container
+            const inputContainer = document.getElementById('questionCount').parentElement;
+            inputContainer.insertAdjacentElement('afterend', errorDiv);
+            
+            // Auto-hide after 3 seconds
+            setTimeout(hideQuestionCountError, 3000);
+        }
+        
+        function hideQuestionCountError() {
+            const errorDiv = document.getElementById('questionCountError');
+            if (errorDiv) {
+                errorDiv.remove();
+            }
         }
 
         function populateChapterGrid() {
@@ -825,10 +893,11 @@
         }
 
         function updateStartButton() {
-            const selectedChapters = document.querySelectorAll('#chapterGrid input[type="checkbox"]:checked');
             const startBtn = document.getElementById('startBtn');
 
-            if (selectedChapters.length > 0 && selectedMode) {
+            // Only require a study mode to be selected
+            // No chapters selected is fine - we'll use random selection
+            if (selectedMode) {
                 startBtn.disabled = false;
             } else {
                 startBtn.disabled = true;
@@ -836,6 +905,9 @@
         }
 
         function startQuiz() {
+            // Get the desired number of questions
+            const questionCount = parseInt(document.getElementById('questionCount').value) || 20;
+            
             // Collect selected chapters
             const selectedChapters = [];
             document.querySelectorAll('#chapterGrid input[type="checkbox"]:checked').forEach(checkbox => {
@@ -851,15 +923,20 @@
                 }
             });
 
-            // Collect questions from selected chapters
-            currentQuiz = [];
-            selectedChapters.forEach(chapter => {
-                if (examData[chapter]) {
-                    currentQuiz.push(...examData[chapter]);
-                }
-            });
+            // Determine which chapters to use for question selection
+            let chaptersToUse = [];
+            if (selectedChapters.length === 0 || selectedChapters.length === Object.keys(examData).length) {
+                // If no chapters selected OR all chapters selected, use all chapters
+                chaptersToUse = Object.keys(examData);
+            } else {
+                // Use only selected chapters
+                chaptersToUse = selectedChapters;
+            }
 
-            // Shuffle questions
+            // Create weighted random selection based on chapter sizes
+            currentQuiz = selectRandomQuestions(chaptersToUse, questionCount);
+
+            // Shuffle the selected questions
             currentQuiz = shuffleArray(currentQuiz);
 
             // Initialize quiz state
@@ -874,6 +951,91 @@
             displayQuestion();
             updateNavigation();
             updateProgress();
+        }
+
+        function selectRandomQuestions(chaptersToUse, targetCount) {
+            // First, collect all available questions from specified chapters
+            const allAvailableQuestions = [];
+            const chapterSizes = {};
+            
+            chaptersToUse.forEach(chapter => {
+                if (examData[chapter]) {
+                    const chapterQuestions = examData[chapter];
+                    chapterSizes[chapter] = chapterQuestions.length;
+                    chapterQuestions.forEach(question => {
+                        allAvailableQuestions.push({
+                            ...question,
+                            sourceChapter: chapter
+                        });
+                    });
+                }
+            });
+
+            // If we have fewer questions available than requested, return all available
+            if (allAvailableQuestions.length <= targetCount) {
+                return allAvailableQuestions;
+            }
+
+            // Calculate total questions for weight calculation
+            const totalQuestions = allAvailableQuestions.length;
+            
+            // Calculate target questions per chapter (weighted by chapter size)
+            const selectedQuestions = [];
+            const chapterTargets = {};
+            
+            // Calculate weighted targets for each chapter
+            chaptersToUse.forEach(chapter => {
+                const weight = chapterSizes[chapter] / totalQuestions;
+                chapterTargets[chapter] = Math.round(targetCount * weight);
+            });
+            
+            // Adjust targets to ensure we get exactly targetCount questions
+            let totalTargeted = Object.values(chapterTargets).reduce((sum, count) => sum + count, 0);
+            const difference = targetCount - totalTargeted;
+            
+            if (difference !== 0) {
+                // Adjust the largest chapter's target to compensate
+                const largestChapter = chaptersToUse.reduce((largest, chapter) => 
+                    chapterSizes[chapter] > chapterSizes[largest] ? chapter : largest
+                );
+                chapterTargets[largestChapter] += difference;
+            }
+
+            // Select random questions from each chapter according to targets
+            chaptersToUse.forEach(chapter => {
+                const chapterQuestions = examData[chapter] ? [...examData[chapter]] : [];
+                const targetForChapter = Math.max(0, Math.min(chapterTargets[chapter], chapterQuestions.length));
+                
+                // Shuffle chapter questions and take the target amount
+                const shuffledChapterQuestions = shuffleArray(chapterQuestions);
+                const selectedFromChapter = shuffledChapterQuestions.slice(0, targetForChapter);
+                
+                // Add source chapter info and add to final selection
+                selectedFromChapter.forEach(question => {
+                    selectedQuestions.push({
+                        ...question,
+                        sourceChapter: chapter
+                    });
+                });
+            });
+
+            // If we still don't have enough questions due to rounding, randomly add more
+            if (selectedQuestions.length < targetCount) {
+                const remaining = allAvailableQuestions.filter(q => 
+                    !selectedQuestions.some(sq => sq.question === q.question)
+                );
+                const shuffledRemaining = shuffleArray(remaining);
+                const needed = targetCount - selectedQuestions.length;
+                selectedQuestions.push(...shuffledRemaining.slice(0, needed));
+            }
+
+            // If we have too many due to rounding, randomly remove some
+            if (selectedQuestions.length > targetCount) {
+                const shuffledSelected = shuffleArray(selectedQuestions);
+                return shuffledSelected.slice(0, targetCount);
+            }
+
+            return selectedQuestions;
         }
 
         function shuffleArray(array) {
