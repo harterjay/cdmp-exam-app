@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(node:*)",
+      "Bash(copy main.html main_backup.html)",
+      "Bash(grep:*)",
+      "Bash(dir:*)",
+      "Bash(sqlite3:*)",
+      "Bash(copy main.html main_with_db_backup.html)",
+      "Bash(curl:*)",
+      "Bash(sed:*)",
+      "Bash(move basic_test.html archive)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

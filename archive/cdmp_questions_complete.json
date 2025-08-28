@@ -1,0 +1,1579 @@
+{
+  "metadata": {
+    "title": "Complete CDMP Questions Database",
+    "description": "All questions extracted from main.html examData",
+    "total_questions": 81,
+    "extracted_date": "2025-08-27T03:30:38.387Z"
+  },
+  "summary": {
+    "total_questions": 81,
+    "chapters": {
+      "Chapter 1: Data Management": {
+        "count": 12,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 2: Data Handling Ethics": {
+        "count": 12,
+        "knowledge_area": "Data Handling Ethics"
+      },
+      "Chapter 3: Data Governance": {
+        "count": 7,
+        "knowledge_area": "Data Governance"
+      },
+      "Chapter 4: Data Architecture": {
+        "count": 4,
+        "knowledge_area": "Data Architecture"
+      },
+      "Chapter 5: Data Modeling and Design": {
+        "count": 4,
+        "knowledge_area": "Data Modeling and Design"
+      },
+      "Chapter 6: Data Storage and Operations": {
+        "count": 4,
+        "knowledge_area": "Data Storage and Operations"
+      },
+      "Chapter 7: Data Security": {
+        "count": 9,
+        "knowledge_area": "Data Security"
+      },
+      "Chapter 8: Data Integration and Interoperability": {
+        "count": 9,
+        "knowledge_area": "Data Integration and Interoperability"
+      },
+      "Chapter 9: Document and Content Management": {
+        "count": 2,
+        "knowledge_area": "Document and Content Management"
+      },
+      "Chapter 10: Reference and Master Data": {
+        "count": 2,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 11: Data Warehousing and Business Intelligence": {
+        "count": 2,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 12: Metadata Management": {
+        "count": 2,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 13: Data Quality": {
+        "count": 2,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 14: Big Data and Data Science": {
+        "count": 2,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 15: Data Management Maturity Assessment": {
+        "count": 2,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 16: Data Management Organization and Role Expectations": {
+        "count": 2,
+        "knowledge_area": "Data Management"
+      },
+      "Chapter 17: Data Management and Organizational Change Management": {
+        "count": 4,
+        "knowledge_area": "Data Management"
+      }
+    },
+    "question_types": {
+      "multiple-choice": 35,
+      "multi-select": 46
+    }
+  },
+  "questions": [
+    {
+      "id": 1,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 1,
+      "question_text": "Please select the correct definition of Data Management from the options below.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Data Management is the strict control of all plans, policies, programs and practices that enable the business strategy to be successfully executed.",
+        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of data and information assets throughout their lifecycles.",
+        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of data assets throughout their lifecycles.",
+        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of information assets throughout their lifecycles."
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 17 of DMBOK2."
+    },
+    {
+      "id": 2,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 2,
+      "question_text": "Data Management Professionals only work with the technical aspects related to data.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 17 of DMBOK2."
+    },
+    {
+      "id": 3,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 3,
+      "question_text": "Differentiating between data and information. Please select the correct answers based on the sentence below: Here is a marketing report for the last month [1]. It is based on data from our data warehouse [2]. Next month these results [3] will be used to generate our month-over-month performance measure [4].",
+      "question_type": "multiple-choice",
+      "answers": [
+        "[1] Information, [2] Information, [3] Data, [4] Information",
+        "[1] Data, [2] Information, [3] Data, [4] Data",
+        "[1] Data, [2] Data, [3] Data, [4] Information",
+        "[1] Information, [2] Data, [3] Data, [4] Information"
+      ],
+      "correct_answer": [
+        3
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 17 of DMBOK2."
+    },
+    {
+      "id": 4,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 4,
+      "question_text": "Please select the answers that correctly describes the set of principles that recognizes salient features of data management and guide data management practice.",
+      "question_type": "multi-select",
+      "answers": [
+        "Data is an asset with unique properties.",
+        "It takes Metadata to manage data.",
+        "The most important part of data management is security.",
+        "Data management is lifecycle management.",
+        "Effective data management requires leadership commitment.",
+        "Efficient data management requires a team of IT professionals only."
+      ],
+      "correct_answer": [
+        0,
+        1,
+        3,
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 22-23 of DMBOK2."
+    },
+    {
+      "id": 5,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 5,
+      "question_text": "Value is the difference between the cost of a thing and the benefit derived from that thing.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 24 of DMBOK2."
+    },
+    {
+      "id": 6,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 6,
+      "question_text": "Please select the correct general cost and benefit categories that can be applied consistently within an organization.",
+      "question_type": "multi-select",
+      "answers": [
+        "Cost of erasing data from servers",
+        "Cost of improving data",
+        "What the data could be sold for",
+        "Benefit of higher quality data",
+        "Cost of replacing data if it were lost",
+        "What competitors would pay for data"
+      ],
+      "correct_answer": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 24 of DMBOK2."
+    },
+    {
+      "id": 7,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 7,
+      "question_text": "Please select the answers that correctly describes where the costs of poor quality data comes from.",
+      "question_type": "multi-select",
+      "answers": [
+        "Scrap and rework",
+        "Organizational conflict",
+        "High job satisfaction",
+        "High productivity",
+        "Reputational costs",
+        "Compliance costs"
+      ],
+      "correct_answer": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 25-26 of DMBOK2."
+    },
+    {
+      "id": 8,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 8,
+      "question_text": "Reduced risk is a benefit of high quality data.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 25-26 of DMBOK2."
+    },
+    {
+      "id": 9,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 9,
+      "question_text": "The better an organization understands the lifecycle and lineage of its data, the better able it will be to manage its data. Please select correct implication of the focus of data management on the data lifecycle.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Data Quality must be managed throughout the data lifecycle",
+        "Data Security must only be managed at the start of the data lifecycle",
+        "Metadata Quality is the most important part of the management process",
+        "Data Management efforts should focus on the most critical data last"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 29 of DMBOK2."
+    },
+    {
+      "id": 10,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 10,
+      "question_text": "Information gaps represent enterprise liabilities with potentially profound impacts on operational effectiveness and profitability.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 30 of DMBOK2."
+    },
+    {
+      "id": 11,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 11,
+      "question_text": "The DMBOK2 identifies how many knowledge areas for data management?",
+      "question_type": "multiple-choice",
+      "answers": [
+        "15",
+        "17",
+        "19",
+        "21"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 19 of DMBOK2."
+    },
+    {
+      "id": 12,
+      "chapter": "Chapter 1: Data Management",
+      "question_number": 12,
+      "question_text": "Which principle states that different types of data have different lifecycle requirements?",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Data is an asset with unique properties",
+        "The value of data can be and should be expressed in economic terms",
+        "Managing data means managing the quality of data",
+        "Data management is lifecycle management"
+      ],
+      "correct_answer": [
+        3
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 28 of DMBOK2."
+    },
+    {
+      "id": 13,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 1,
+      "question_text": "Data handling ethics are concerned with how to procure, store, manage, use and dispose of data in ways that are aligned with ethical principles.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 49 of DMBOK2."
+    },
+    {
+      "id": 14,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 2,
+      "question_text": "The ethics of data handling are complex, but is centred on several core concepts. Please select the correct answers.",
+      "question_type": "multi-select",
+      "answers": [
+        "Impact on machines",
+        "Impact on people",
+        "Potential for data management",
+        "Potential for misuse",
+        "Economic value of ethics",
+        "Economics value of data"
+      ],
+      "correct_answer": [
+        1,
+        3,
+        5
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 49 of DMBOK2."
+    },
+    {
+      "id": 15,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 3,
+      "question_text": "Within the Data Handling Ethics Context Diagram a key deliverable is the Ethical Data Handling Strategy.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 50 of DMBOK2."
+    },
+    {
+      "id": 16,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 4,
+      "question_text": "The Belmont principles that may be adapted for Information Management disciplines, include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Respect for Persons",
+        "Respect for Machines",
+        "Beneficence",
+        "Criminality",
+        "Justice"
+      ],
+      "correct_answer": [
+        0,
+        2,
+        4
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 52 of DMBOK2."
+    },
+    {
+      "id": 17,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 5,
+      "question_text": "Please select the correct principles of the General Data Protection Regulation (GDPR) of the EU.",
+      "question_type": "multi-select",
+      "answers": [
+        "Purpose Limitation",
+        "Data Minimisation",
+        "Accuracy",
+        "Storage Limitation",
+        "Accountability",
+        "All of the above"
+      ],
+      "correct_answer": [
+        5
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 54 of DMBOK2."
+    },
+    {
+      "id": 18,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 6,
+      "question_text": "Misleading visualisations could be an example where a base level of truthfulness and transparency are not adhered to.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 57 of DMBOK2."
+    },
+    {
+      "id": 19,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 7,
+      "question_text": "Bias refers to an inclination of outlook. Please select the types of data bias:",
+      "question_type": "multi-select",
+      "answers": [
+        "Data collection for pre-defined results",
+        "Hunch and search",
+        "Positive reinforcement",
+        "Context and Emotion",
+        "Biased use of data collected",
+        "Biased sampling methodology"
+      ],
+      "correct_answer": [
+        0,
+        1,
+        4,
+        5
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 58-59 of DMBOK2."
+    },
+    {
+      "id": 20,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 8,
+      "question_text": "If data is not integrated with care it presents risk for unethical data handling. These ethical risks intersect with fundamental problems in data management including: Limited knowledge of data's origin and lineage; Data of poor quality; Unreliable Metadata; and Documentation of error remediation.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 59-60 of DMBOK2."
+    },
+    {
+      "id": 21,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 9,
+      "question_text": "Obfuscating or redacting data is the practice of making information anonymous ot removing sensitive information. Risks are present in the following instances:",
+      "question_type": "multi-select",
+      "answers": [
+        "Data storage",
+        "Data marketing",
+        "Data aggregation",
+        "Data marking",
+        "Data masking",
+        "Data integration"
+      ],
+      "correct_answer": [
+        2,
+        3,
+        4
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 60 of DMBOK2."
+    },
+    {
+      "id": 22,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 10,
+      "question_text": "Improving an organization's ethical behaviour requires an informal Organizational Change Management (OCM) process.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 61 of DMBOK2."
+    },
+    {
+      "id": 23,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 11,
+      "question_text": "The principle of data minimisation means:",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Collecting as much data as possible",
+        "Collecting only what is necessary for the stated purpose",
+        "Minimizing data storage costs",
+        "Reducing data processing time"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 54 of DMBOK2."
+    },
+    {
+      "id": 24,
+      "chapter": "Chapter 2: Data Handling Ethics",
+      "question_number": 12,
+      "question_text": "Consent for data collection should be:",
+      "question_type": "multi-select",
+      "answers": [
+        "Freely given",
+        "Specific",
+        "Informed",
+        "Ambiguous",
+        "Unambiguous"
+      ],
+      "correct_answer": [
+        0,
+        1,
+        2,
+        4
+      ],
+      "knowledge_area": "Data Handling Ethics",
+      "explanation": "Please refer to page 55 of DMBOK2."
+    },
+    {
+      "id": 25,
+      "chapter": "Chapter 3: Data Governance",
+      "question_number": 1,
+      "question_text": "The purpose of data governance is to ensure that data is managed properly, according to policies and best practices. Data governance is focused on how decisions are made about data and how people and processes are expected to behave in relation to data.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Governance",
+      "explanation": "Please refer to page 67-68 of DMBOK2."
+    },
+    {
+      "id": 26,
+      "chapter": "Chapter 3: Data Governance",
+      "question_number": 2,
+      "question_text": "The scope and focus of any data governance program depend on organizational needs, but most programs include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Strategy",
+        "Policy",
+        "Data Management Projects",
+        "Compliance",
+        "Oversight",
+        "All of the above"
+      ],
+      "correct_answer": [
+        5
+      ],
+      "knowledge_area": "Data Governance",
+      "explanation": "Please refer to page 68 of DMBOK2."
+    },
+    {
+      "id": 27,
+      "chapter": "Chapter 3: Data Governance",
+      "question_number": 3,
+      "question_text": "A goal of data governance is to enable an organisation to manage its data as a liability.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Governance",
+      "explanation": "Please refer to page 69 of DMBOK2."
+    },
+    {
+      "id": 28,
+      "chapter": "Chapter 3: Data Governance",
+      "question_number": 4,
+      "question_text": "Drivers for data governance most often focus on reducing risk or improving processes. Please select the elements that relate to the reduction in risk:",
+      "question_type": "multi-select",
+      "answers": [
+        "Specific risk management",
+        "General risk management",
+        "Data ethics",
+        "Data security",
+        "Publicity",
+        "Privacy"
+      ],
+      "correct_answer": [
+        1,
+        3,
+        5
+      ],
+      "knowledge_area": "Data Governance",
+      "explanation": "Please refer to page 70 of DMBOK2."
+    },
+    {
+      "id": 29,
+      "chapter": "Chapter 3: Data Governance",
+      "question_number": 5,
+      "question_text": "Drivers for data governance most often focus on reducing risk or improving processes. Please select the elements that relate to the improvement of processes:",
+      "question_type": "multi-select",
+      "answers": [
+        "Regulatory compliance",
+        "Data quality improvements",
+        "Metadata management",
+        "Efficiency in development projects",
+        "Vendor management",
+        "All of the above"
+      ],
+      "correct_answer": [
+        5
+      ],
+      "knowledge_area": "Data Governance",
+      "explanation": "Please refer to page 70 of DMBOK2."
+    },
+    {
+      "id": 30,
+      "chapter": "Chapter 3: Data Governance",
+      "question_number": 6,
+      "question_text": "Data governance operating model components include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Organization and roles",
+        "Governance processes",
+        "Data rules and standards",
+        "Metrics and scorecards",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Governance",
+      "explanation": "Please refer to page 72 of DMBOK2."
+    },
+    {
+      "id": 31,
+      "chapter": "Chapter 3: Data Governance",
+      "question_number": 7,
+      "question_text": "The Data Governance Council typically includes:",
+      "question_type": "multi-select",
+      "answers": [
+        "Senior business executives",
+        "IT leadership",
+        "Data stewards",
+        "Legal representatives",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Governance",
+      "explanation": "Please refer to page 73 of DMBOK2."
+    },
+    {
+      "id": 32,
+      "chapter": "Chapter 4: Data Architecture",
+      "question_number": 1,
+      "question_text": "Data architecture describes the structure of an organization's logical and physical data assets and data management resources.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Architecture",
+      "explanation": "Please refer to page 87 of DMBOK2."
+    },
+    {
+      "id": 33,
+      "chapter": "Chapter 4: Data Architecture",
+      "question_number": 2,
+      "question_text": "Which of the following are components of data architecture?",
+      "question_type": "multi-select",
+      "answers": [
+        "Data models",
+        "Data flows",
+        "Data stores",
+        "Data processing",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Architecture",
+      "explanation": "Please refer to page 88 of DMBOK2."
+    },
+    {
+      "id": 34,
+      "chapter": "Chapter 4: Data Architecture",
+      "question_number": 3,
+      "question_text": "Enterprise data architecture describes:",
+      "question_type": "multi-select",
+      "answers": [
+        "Data strategy and business case",
+        "Operating data model",
+        "Data integration architecture",
+        "Data governance",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Architecture",
+      "explanation": "Please refer to page 89 of DMBOK2."
+    },
+    {
+      "id": 35,
+      "chapter": "Chapter 4: Data Architecture",
+      "question_number": 4,
+      "question_text": "Data architecture principles should be:",
+      "question_type": "multi-select",
+      "answers": [
+        "Business-driven",
+        "Technology-independent",
+        "Consistent with enterprise architecture",
+        "Flexible and adaptable",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Architecture",
+      "explanation": "Please refer to page 90 of DMBOK2."
+    },
+    {
+      "id": 36,
+      "chapter": "Chapter 5: Data Modeling and Design",
+      "question_number": 1,
+      "question_text": "Data modeling is the process of discovering, analyzing and scoping data requirements, and then representing and communicating these data requirements in a precise form called the data model.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Modeling and Design",
+      "explanation": "Please refer to page 127 of DMBOK2."
+    },
+    {
+      "id": 37,
+      "chapter": "Chapter 5: Data Modeling and Design",
+      "question_number": 2,
+      "question_text": "Which are the three levels of data modeling?",
+      "question_type": "multi-select",
+      "answers": [
+        "Conceptual",
+        "Logical",
+        "Physical",
+        "Technical",
+        "Semantic"
+      ],
+      "correct_answer": [
+        0,
+        1,
+        2
+      ],
+      "knowledge_area": "Data Modeling and Design",
+      "explanation": "Please refer to page 128 of DMBOK2."
+    },
+    {
+      "id": 38,
+      "chapter": "Chapter 5: Data Modeling and Design",
+      "question_number": 3,
+      "question_text": "A conceptual data model:",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Contains detailed attribute definitions",
+        "Shows high-level business concepts and relationships",
+        "Includes physical implementation details",
+        "Specifies database table structures"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Modeling and Design",
+      "explanation": "Please refer to page 129 of DMBOK2."
+    },
+    {
+      "id": 39,
+      "chapter": "Chapter 5: Data Modeling and Design",
+      "question_number": 4,
+      "question_text": "Normalization in data modeling aims to:",
+      "question_type": "multi-select",
+      "answers": [
+        "Eliminate data redundancy",
+        "Ensure data integrity",
+        "Improve performance",
+        "Reduce storage requirements",
+        "All of the above except performance"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Modeling and Design",
+      "explanation": "Please refer to page 140 of DMBOK2."
+    },
+    {
+      "id": 40,
+      "chapter": "Chapter 6: Data Storage and Operations",
+      "question_number": 1,
+      "question_text": "Data storage and operations includes the design, implementation and support of stored data, to maximize its value throughout its lifecycle.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Storage and Operations",
+      "explanation": "Please refer to page 177 of DMBOK2."
+    },
+    {
+      "id": 41,
+      "chapter": "Chapter 6: Data Storage and Operations",
+      "question_number": 2,
+      "question_text": "Database management activities include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Performance monitoring",
+        "Backup and recovery",
+        "Security management",
+        "Capacity planning",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Storage and Operations",
+      "explanation": "Please refer to page 180 of DMBOK2."
+    },
+    {
+      "id": 42,
+      "chapter": "Chapter 6: Data Storage and Operations",
+      "question_number": 3,
+      "question_text": "Database backup strategies include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Full backups",
+        "Incremental backups",
+        "Differential backups",
+        "Transaction log backups",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Storage and Operations",
+      "explanation": "Please refer to page 185 of DMBOK2."
+    },
+    {
+      "id": 43,
+      "chapter": "Chapter 6: Data Storage and Operations",
+      "question_number": 4,
+      "question_text": "Database performance tuning involves:",
+      "question_type": "multi-select",
+      "answers": [
+        "Index optimization",
+        "Query optimization",
+        "Storage optimization",
+        "Memory management",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Storage and Operations",
+      "explanation": "Please refer to page 190 of DMBOK2."
+    },
+    {
+      "id": 44,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 1,
+      "question_text": "Data security ensures that data privacy and confidentiality are maintained, that data is not breached, and that data is accessed appropriately.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 223 of DMBOK2."
+    },
+    {
+      "id": 45,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 2,
+      "question_text": "The CIA triad in data security stands for:",
+      "question_type": "multi-select",
+      "answers": [
+        "Confidentiality",
+        "Integrity",
+        "Availability",
+        "Authentication",
+        "Authorization"
+      ],
+      "correct_answer": [
+        0,
+        1,
+        2
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 224 of DMBOK2."
+    },
+    {
+      "id": 46,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 3,
+      "question_text": "Access control methods include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Role-based access control (RBAC)",
+        "Attribute-based access control (ABAC)",
+        "Mandatory access control (MAC)",
+        "Discretionary access control (DAC)",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 235 of DMBOK2."
+    },
+    {
+      "id": 47,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 4,
+      "question_text": "Data encryption can be applied at:",
+      "question_type": "multi-select",
+      "answers": [
+        "Data at rest",
+        "Data in transit",
+        "Data in use",
+        "Database level",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 240 of DMBOK2."
+    },
+    {
+      "id": 48,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 5,
+      "question_text": "Data loss prevention (DLP) tools help:",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Prevent unauthorized data access",
+        "Monitor and prevent data exfiltration",
+        "Encrypt sensitive data",
+        "Backup critical data"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 245 of DMBOK2."
+    },
+    {
+      "id": 49,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 6,
+      "question_text": "Security audit activities include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Access log review",
+        "Vulnerability assessments",
+        "Penetration testing",
+        "Compliance validation",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 250 of DMBOK2."
+    },
+    {
+      "id": 50,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 7,
+      "question_text": "Data privacy regulations include:",
+      "question_type": "multi-select",
+      "answers": [
+        "GDPR (General Data Protection Regulation)",
+        "CCPA (California Consumer Privacy Act)",
+        "PIPEDA (Personal Information Protection and Electronic Documents Act)",
+        "HIPAA (Health Insurance Portability and Accountability Act)",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 255 of DMBOK2."
+    },
+    {
+      "id": 51,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 8,
+      "question_text": "Incident response planning should include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Detection procedures",
+        "Response team roles",
+        "Communication protocols",
+        "Recovery procedures",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 260 of DMBOK2."
+    },
+    {
+      "id": 52,
+      "chapter": "Chapter 7: Data Security",
+      "question_number": 9,
+      "question_text": "Data classification schemes help:",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Determine appropriate security controls",
+        "Improve data quality",
+        "Reduce storage costs",
+        "Increase processing speed"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Security",
+      "explanation": "Please refer to page 230 of DMBOK2."
+    },
+    {
+      "id": 53,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 1,
+      "question_text": "Data integration involves combining data from different sources to provide users with a unified view.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 267 of DMBOK2."
+    },
+    {
+      "id": 54,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 2,
+      "question_text": "Common data integration approaches include:",
+      "question_type": "multi-select",
+      "answers": [
+        "ETL (Extract, Transform, Load)",
+        "ELT (Extract, Load, Transform)",
+        "Data virtualization",
+        "Data replication",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 270 of DMBOK2."
+    },
+    {
+      "id": 55,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 3,
+      "question_text": "Data integration challenges include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Data format differences",
+        "Semantic inconsistencies",
+        "Data quality issues",
+        "Performance bottlenecks",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 275 of DMBOK2."
+    },
+    {
+      "id": 56,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 4,
+      "question_text": "Master data integration patterns include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Registry style",
+        "Repository style",
+        "Hybrid style",
+        "Transactional style",
+        "All of the above except transactional"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 280 of DMBOK2."
+    },
+    {
+      "id": 57,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 5,
+      "question_text": "Data lineage tracking provides:",
+      "question_type": "multi-select",
+      "answers": [
+        "Source-to-target mapping",
+        "Transformation logic",
+        "Data flow visualization",
+        "Impact analysis",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 285 of DMBOK2."
+    },
+    {
+      "id": 58,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 6,
+      "question_text": "Real-time data integration requires:",
+      "question_type": "multi-select",
+      "answers": [
+        "Change data capture (CDC)",
+        "Message queuing systems",
+        "Event-driven architecture",
+        "Stream processing",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 290 of DMBOK2."
+    },
+    {
+      "id": 59,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 7,
+      "question_text": "Data service architecture benefits include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Reusability",
+        "Loose coupling",
+        "Scalability",
+        "Agility",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 295 of DMBOK2."
+    },
+    {
+      "id": 60,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 8,
+      "question_text": "API management for data services includes:",
+      "question_type": "multi-select",
+      "answers": [
+        "API design and documentation",
+        "Security and access control",
+        "Performance monitoring",
+        "Version management",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 300 of DMBOK2."
+    },
+    {
+      "id": 61,
+      "chapter": "Chapter 8: Data Integration and Interoperability",
+      "question_number": 9,
+      "question_text": "Data federation allows:",
+      "question_type": "multiple-choice",
+      "answers": [
+        "Physical consolidation of data",
+        "Virtual integration without moving data",
+        "Permanent data storage",
+        "Data compression"
+      ],
+      "correct_answer": [
+        1
+      ],
+      "knowledge_area": "Data Integration and Interoperability",
+      "explanation": "Please refer to page 305 of DMBOK2."
+    },
+    {
+      "id": 62,
+      "chapter": "Chapter 9: Document and Content Management",
+      "question_number": 1,
+      "question_text": "Document and content management controls the capture, storage, access, and use of data and information stored outside of databases.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Document and Content Management",
+      "explanation": "Please refer to page 321 of DMBOK2."
+    },
+    {
+      "id": 63,
+      "chapter": "Chapter 9: Document and Content Management",
+      "question_number": 2,
+      "question_text": "Key components of content management include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Content creation",
+        "Content organization",
+        "Content retrieval",
+        "Content preservation",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Document and Content Management",
+      "explanation": "Please refer to page 322 of DMBOK2."
+    },
+    {
+      "id": 64,
+      "chapter": "Chapter 10: Reference and Master Data",
+      "question_number": 1,
+      "question_text": "Master data represents the critical nouns of a business and can be defined as the consistent and uniform set of identifiers and extended attributes.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 347 of DMBOK2."
+    },
+    {
+      "id": 65,
+      "chapter": "Chapter 10: Reference and Master Data",
+      "question_number": 2,
+      "question_text": "Types of reference data include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Code sets",
+        "Lookup tables",
+        "Valid values",
+        "Classification schemes",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 348 of DMBOK2."
+    },
+    {
+      "id": 66,
+      "chapter": "Chapter 11: Data Warehousing and Business Intelligence",
+      "question_number": 1,
+      "question_text": "A data warehouse is a copy of transaction data specifically structured for query and analysis.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 389 of DMBOK2."
+    },
+    {
+      "id": 67,
+      "chapter": "Chapter 11: Data Warehousing and Business Intelligence",
+      "question_number": 2,
+      "question_text": "Key characteristics of a data warehouse include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Subject-oriented",
+        "Integrated",
+        "Time-variant",
+        "Non-volatile",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 390 of DMBOK2."
+    },
+    {
+      "id": 68,
+      "chapter": "Chapter 12: Metadata Management",
+      "question_number": 1,
+      "question_text": "Metadata is data about data. It describes the characteristics of data and provides context that makes data meaningful.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 431 of DMBOK2."
+    },
+    {
+      "id": 69,
+      "chapter": "Chapter 12: Metadata Management",
+      "question_number": 2,
+      "question_text": "Types of metadata include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Technical metadata",
+        "Business metadata",
+        "Process metadata",
+        "Operational metadata",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 432 of DMBOK2."
+    },
+    {
+      "id": 70,
+      "chapter": "Chapter 13: Data Quality",
+      "question_number": 1,
+      "question_text": "Data quality refers to the state of qualitative or quantitative pieces of information.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 467 of DMBOK2."
+    },
+    {
+      "id": 71,
+      "chapter": "Chapter 13: Data Quality",
+      "question_number": 2,
+      "question_text": "Common data quality dimensions include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Completeness",
+        "Uniqueness",
+        "Timeliness",
+        "Validity",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 468 of DMBOK2."
+    },
+    {
+      "id": 72,
+      "chapter": "Chapter 14: Big Data and Data Science",
+      "question_number": 1,
+      "question_text": "Big data is characterized by the three Vs: Volume, Velocity, and Variety.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 515 of DMBOK2."
+    },
+    {
+      "id": 73,
+      "chapter": "Chapter 14: Big Data and Data Science",
+      "question_number": 2,
+      "question_text": "Data science activities include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Data exploration",
+        "Model development",
+        "Model validation",
+        "Model deployment",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 520 of DMBOK2."
+    },
+    {
+      "id": 74,
+      "chapter": "Chapter 15: Data Management Maturity Assessment",
+      "question_number": 1,
+      "question_text": "Data management maturity assessment helps organizations understand their current data management capabilities and identify areas for improvement.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 559 of DMBOK2."
+    },
+    {
+      "id": 75,
+      "chapter": "Chapter 15: Data Management Maturity Assessment",
+      "question_number": 2,
+      "question_text": "Maturity models typically include levels such as:",
+      "question_type": "multi-select",
+      "answers": [
+        "Initial",
+        "Developing",
+        "Defined",
+        "Managed",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 560 of DMBOK2."
+    },
+    {
+      "id": 76,
+      "chapter": "Chapter 16: Data Management Organization and Role Expectations",
+      "question_number": 1,
+      "question_text": "Successful data management requires people with different skills working together in defined roles with clear responsibilities.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 579 of DMBOK2."
+    },
+    {
+      "id": 77,
+      "chapter": "Chapter 16: Data Management Organization and Role Expectations",
+      "question_number": 2,
+      "question_text": "Key data management roles include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Data Steward",
+        "Data Architect",
+        "Database Administrator",
+        "Data Analyst",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 580 of DMBOK2."
+    },
+    {
+      "id": 78,
+      "chapter": "Chapter 17: Data Management and Organizational Change Management",
+      "question_number": 1,
+      "question_text": "Organizational change management is critical for successful data management initiatives.",
+      "question_type": "multiple-choice",
+      "answers": [
+        "True",
+        "False"
+      ],
+      "correct_answer": [
+        0
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 607 of DMBOK2."
+    },
+    {
+      "id": 79,
+      "chapter": "Chapter 17: Data Management and Organizational Change Management",
+      "question_number": 2,
+      "question_text": "Key elements of change management include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Communication",
+        "Training",
+        "Leadership support",
+        "Cultural change",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 608 of DMBOK2."
+    },
+    {
+      "id": 80,
+      "chapter": "Chapter 17: Data Management and Organizational Change Management",
+      "question_number": 3,
+      "question_text": "Resistance to change in data management initiatives often comes from:",
+      "question_type": "multi-select",
+      "answers": [
+        "Fear of job loss",
+        "Comfort with current processes",
+        "Lack of understanding of benefits",
+        "Technical complexity",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 610 of DMBOK2."
+    },
+    {
+      "id": 81,
+      "chapter": "Chapter 17: Data Management and Organizational Change Management",
+      "question_number": 4,
+      "question_text": "Success factors for data management change include:",
+      "question_type": "multi-select",
+      "answers": [
+        "Executive sponsorship",
+        "Clear communication",
+        "Adequate training",
+        "Phased implementation",
+        "All of the above"
+      ],
+      "correct_answer": [
+        4
+      ],
+      "knowledge_area": "Data Management",
+      "explanation": "Please refer to page 612 of DMBOK2."
+    }
+  ]
+}

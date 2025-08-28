@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Database Test</title>
+</head>
+<body>
+    <h1>Simple Database Test</h1>
+    <div id="output"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <script>
+        document.getElementById('output').innerHTML = 'Starting test...';
+        
+        async function test() {
+            try {
+                document.getElementById('output').innerHTML += '<br>Loading SQL.js...';
+                
+                const SQL = await initSqlJs({
+                    locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+                });
+                
+                document.getElementById('output').innerHTML += '<br>Fetching database...';
+                const response = await fetch('cdmp_questions_full_exam_clean.db');
+                
+                if (!response.ok) {
+                    throw new Error('Database fetch failed: ' + response.status);
+                }
+                
+                document.getElementById('output').innerHTML += '<br>Creating database...';
+                const dbBuffer = await response.arrayBuffer();
+                const db = new SQL.Database(new Uint8Array(dbBuffer));
+                
+                document.getElementById('output').innerHTML += '<br>Querying database...';
+                const stmt = db.prepare('SELECT DISTINCT knowledge_area FROM questions LIMIT 5');
+                const areas = [];
+                while (stmt.step()) {
+                    areas.push(stmt.getAsObject().knowledge_area);
+                }
+                
+                document.getElementById('output').innerHTML += '<br>Success! Knowledge areas: ' + areas.join(', ');
+                stmt.free();
+                db.close();
+                
+            } catch (error) {
+                document.getElementById('output').innerHTML += '<br>Error: ' + error.message;
+                console.error(error);
+            }
+        }
+        
+        test();
+    </script>
+</body>
+</html>

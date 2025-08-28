@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug CDMP App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .chapter-item { 
+            background: #f8f9fa; 
+            border: 2px solid #e9ecef; 
+            border-radius: 8px; 
+            padding: 15px; 
+            margin: 10px 0; 
+            cursor: pointer; 
+        }
+        .chapter-item.selected { 
+            border-color: #667eea; 
+            background: #e3f2fd; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Test</h1>
+    <div id="status">Loading...</div>
+    <div id="chapterGrid"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <script>
+        console.log("Script starting...");
+        
+        let db = null;
+        let examData = {};
+        
+        // Initialize SQL.js and load database
+        async function initDatabase() {
+            try {
+                document.getElementById('status').textContent = "Loading SQL.js...";
+                console.log("Loading SQL.js...");
+                
+                const SQL = await initSqlJs({
+                    locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+                });
+                
+                document.getElementById('status').textContent = "Fetching database...";
+                console.log("SQL.js loaded, fetching database...");
+                
+                const response = await fetch('cdmp_questions_full_exam_clean.db');
+                if (!response.ok) {
+                    throw new Error(`Failed to load database: ${response.status}`);
+                }
+                
+                document.getElementById('status').textContent = "Parsing database...";
+                console.log("Database fetched, parsing...");
+                
+                const dbBuffer = await response.arrayBuffer();
+                db = new SQL.Database(new Uint8Array(dbBuffer));
+                
+                document.getElementById('status').textContent = "Loading questions...";
+                console.log("Database loaded! Loading questions...");
+                
+                await loadQuestionsFromDB();
+                console.log("Database loaded successfully, examData keys:", Object.keys(examData));
+                testPopulate();
+            } catch (error) {
+                console.error("Failed to load database:", error);
+                document.getElementById('status').textContent = "Error: " + error.message;
+            }
+        }
+
+        // Load questions from database
+        async function loadQuestionsFromDB() {
+            const stmt = db.prepare(`
+                SELECT question, question_type, possible_answers, correct_answers, 
+                       explanation, knowledge_area, source_page 
+                FROM questions
+                ORDER BY knowledge_area, id
+            `);
+            
+            while (stmt.step()) {
+                const row = stmt.getAsObject();
+                const knowledgeArea = row.knowledge_area;
+                
+                if (!examData[knowledgeArea]) {
+                    examData[knowledgeArea] = [];
+                }
+                
+                const answers = JSON.parse(row.possible_answers);
+                const correctAnswers = JSON.parse(row.correct_answers);
+                
+                examData[knowledgeArea].push({
+                    question: row.question,
+                    type: row.question_type === 'multi-select' ? 'multi-select' : 'multiple-choice',
+                    answers: answers,
+                    correct: correctAnswers.map(answer => parseInt(answer) - 1), // Convert to 0-based indices
+                    explanation: row.explanation + (row.source_page ? ` (Page ${row.source_page})` : "")
+                });
+            }
+            stmt.free();
+        }
+
+        function testPopulate() {
+            console.log("testPopulate called");
+            document.getElementById('status').textContent = "Populating chapters...";
+            
+            const grid = document.getElementById('chapterGrid');
+            console.log("Grid element:", grid);
+            
+            if (!grid) {
+                console.error("Grid element not found!");
+                return;
+            }
+            
+            grid.innerHTML = '';
+            
+            try {
+                Object.keys(examData).forEach((chapter, index) => {
+                    console.log(`Creating chapter: ${chapter}`);
+                    
+                    const div = document.createElement('div');
+                    div.className = 'chapter-item';
+                    div.innerHTML = `<strong>${chapter}</strong><br>${examData[chapter].length} questions`;
+                    
+                    div.addEventListener('click', () => {
+                        div.classList.toggle('selected');
+                        console.log(`Clicked: ${chapter}`);
+                    });
+                    
+                    grid.appendChild(div);
+                });
+                
+                document.getElementById('status').textContent = "Chapters loaded successfully!";
+                console.log("Chapters populated successfully");
+                
+            } catch (error) {
+                console.error("Error in forEach:", error);
+                document.getElementById('status').textContent = "Error: " + error.message;
+            }
+        }
+        
+        // Start database initialization
+        console.log("Starting database initialization...");
+        initDatabase();
+    </script>
+</body>
+</html>

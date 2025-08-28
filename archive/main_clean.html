@@ -1,0 +1,1896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDMP Exam Study App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .setup-section {
+            padding: 30px;
+        }
+
+        .quiz-section {
+            padding: 30px;
+            display: none;
+        }
+
+        .results-section {
+            padding: 30px;
+            display: none;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .chapter-item {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-item:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+        }
+
+        .chapter-item.selected {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+
+        .chapter-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .chapter-count {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .mode-selection {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .mode-option {
+            flex: 1;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .mode-option:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+        }
+
+        .mode-option.selected {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+
+        .mode-option input[type="radio"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 100%;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .start-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.1em;
+        }
+
+        .question-type {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .answer-option {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .answer-option:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+        }
+
+        .answer-option.selected {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+
+        .answer-option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+        }
+
+        .answer-option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .answer-option input {
+            margin: 0;
+            transform: scale(1.2);
+        }
+
+        .answer-text {
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .nav-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .nav-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        .results-summary {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score {
+            font-size: 3em;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .score-label {
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .results-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .result-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .result-value {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .result-label {
+            color: #666;
+        }
+
+        .restart-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .chapter-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mode-selection {
+                flex-direction: column;
+            }
+
+            .navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .results-details {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CDMP Exam Study App</h1>
+            <p>Master the DMBOK2 with interactive practice questions</p>
+        </div>
+
+        <div class="main-content">
+            <!-- Setup Section -->
+            <div class="setup-section" id="setup">
+                <div class="form-group">
+                    <label>Select Chapters to Study:</label>
+                    <div class="chapter-grid" id="chapterGrid">
+                        <!-- Chapters will be populated by JavaScript -->
+                    </div>
+                    <button type="button" id="selectAllBtn" style="margin: 10px 5px; padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Select All</button>
+                    <button type="button" id="deselectAllBtn" style="margin: 10px 5px; padding: 8px 16px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer;">Deselect All</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Study Mode:</label>
+                    <div class="mode-selection">
+                        <div class="mode-option" id="practiceMode">
+                            <input type="radio" name="mode" value="practice" id="practice">
+                            <div>
+                                <h3>Practice Mode</h3>
+                                <p>Get immediate feedback after each question</p>
+                            </div>
+                        </div>
+                        <div class="mode-option" id="examMode">
+                            <input type="radio" name="mode" value="exam" id="exam">
+                            <div>
+                                <h3>Exam Mode</h3>
+                                <p>Answer all questions, then see results</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="start-btn" id="startBtn" disabled>Start Quiz</button>
+            </div>
+
+            <!-- Quiz Section -->
+            <div class="quiz-section" id="quiz">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+
+                <div class="question-card" id="questionCard">
+                    <!-- Question content will be populated by JavaScript -->
+                </div>
+
+                <div class="navigation">
+                    <button class="nav-btn" id="prevBtn" disabled>Previous</button>
+                    <span id="questionCounter">Question 1 of 10</span>
+                    <button class="nav-btn" id="nextBtn">Next</button>
+                </div>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="results">
+                <div class="results-summary">
+                    <div class="score" id="finalScore">0%</div>
+                    <div class="score-label">Final Score</div>
+                </div>
+
+                <div class="results-details">
+                    <div class="result-item">
+                        <div class="result-value" id="correctCount">0</div>
+                        <div class="result-label">Correct</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="incorrectCount">0</div>
+                        <div class="result-label">Incorrect</div>
+                    </div>
+                    <div class="result-item">
+                        <div class="result-value" id="totalQuestions">0</div>
+                        <div class="result-label">Total Questions</div>
+                    </div>
+                </div>
+
+                <button class="restart-btn" id="restartBtn">Take Another Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Question data parsed from the provided document
+        const examData = {
+            "Chapter 1: Data Management": [
+                {
+                    question: "Please select the correct definition of Data Management from the options below.",
+                    type: "multiple-choice",
+                    answers: [
+                        "Data Management is the strict control of all plans, policies, programs and practices that enable the business strategy to be successfully executed.",
+                        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of data and information assets throughout their lifecycles.",
+                        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of data assets throughout their lifecycles.",
+                        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of information assets throughout their lifecycles."
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 17 of DMBOK2."
+                },
+                {
+                    question: "Data Management Professionals only work with the technical aspects related to data.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 17 of DMBOK2."
+                },
+                {
+                    question: "Differentiating between data and information. Please select the correct answers based on the sentence below: Here is a marketing report for the last month [1]. It is based on data from our data warehouse [2]. Next month these results [3] will be used to generate our month-over-month performance measure [4].",
+                    type: "multiple-choice",
+                    answers: [
+                        "[1] Information, [2] Information, [3] Data, [4] Information",
+                        "[1] Data, [2] Information, [3] Data, [4] Data",
+                        "[1] Data, [2] Data, [3] Data, [4] Information",
+                        "[1] Information, [2] Data, [3] Data, [4] Information"
+                    ],
+                    correct: [3],
+                    explanation: "Please refer to page 17 of DMBOK2."
+                },
+                {
+                    question: "Please select the answers that correctly describes the set of principles that recognizes salient features of data management and guide data management practice.",
+                    type: "multi-select",
+                    answers: [
+                        "Data is an asset with unique properties.",
+                        "It takes Metadata to manage data.",
+                        "The most important part of data management is security.",
+                        "Data management is lifecycle management.",
+                        "Effective data management requires leadership commitment.",
+                        "Efficient data management requires a team of IT professionals only."
+                    ],
+                    correct: [0,1,3,4],
+                    explanation: "Please refer to page 22-23 of DMBOK2."
+                },
+                {
+                    question: "Value is the difference between the cost of a thing and the benefit derived from that thing.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 24 of DMBOK2."
+                },
+                {
+                    question: "Please select the correct general cost and benefit categories that can be applied consistently within an organization.",
+                    type: "multi-select",
+                    answers: [
+                        "Cost of erasing data from servers",
+                        "Cost of improving data",
+                        "What the data could be sold for",
+                        "Benefit of higher quality data",
+                        "Cost of replacing data if it were lost",
+                        "What competitors would pay for data"
+                    ],
+                    correct: [1,2,3,4,5],
+                    explanation: "Please refer to page 24 of DMBOK2."
+                },
+                {
+                    question: "Please select the answers that correctly describes where the costs of poor quality data comes from.",
+                    type: "multi-select",
+                    answers: [
+                        "Scrap and rework",
+                        "Organizational conflict",
+                        "High job satisfaction",
+                        "High productivity",
+                        "Reputational costs",
+                        "Compliance costs"
+                    ],
+                    correct: [0,1,4,5],
+                    explanation: "Please refer to page 25-26 of DMBOK2."
+                },
+                {
+                    question: "Reduced risk is a benefit of high quality data.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 25-26 of DMBOK2."
+                },
+                {
+                    question: "The better an organization understands the lifecycle and lineage of its data, the better able it will be to manage its data. Please select correct implication of the focus of data management on the data lifecycle.",
+                    type: "multiple-choice",
+                    answers: [
+                        "Data Quality must be managed throughout the data lifecycle",
+                        "Data Security must only be managed at the start of the data lifecycle",
+                        "Metadata Quality is the most important part of the management process",
+                        "Data Management efforts should focus on the most critical data last"
+                    ],
+                    correct: [0],
+                    explanation: "Please refer to page 29 of DMBOK2."
+                },
+                {
+                    question: "Information gaps represent enterprise liabilities with potentially profound impacts on operational effectiveness and profitability.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 30 of DMBOK2."
+                },
+                {
+                    question: "The DMBOK2 identifies how many knowledge areas for data management?",
+                    type: "multiple-choice",
+                    answers: ["15", "17", "19", "21"],
+                    correct: [1],
+                    explanation: "Please refer to page 19 of DMBOK2."
+                },
+                {
+                    question: "Which principle states that different types of data have different lifecycle requirements?",
+                    type: "multiple-choice",
+                    answers: [
+                        "Data is an asset with unique properties",
+                        "The value of data can be and should be expressed in economic terms",
+                        "Managing data means managing the quality of data",
+                        "Data management is lifecycle management"
+                    ],
+                    correct: [3],
+                    explanation: "Please refer to page 28 of DMBOK2."
+                }
+            ],
+            "Chapter 2: Data Handling Ethics": [
+                {
+                    question: "Data handling ethics are concerned with how to procure, store, manage, use and dispose of data in ways that are aligned with ethical principles.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 49 of DMBOK2."
+                },
+                {
+                    question: "The ethics of data handling are complex, but is centred on several core concepts. Please select the correct answers.",
+                    type: "multi-select",
+                    answers: [
+                        "Impact on machines",
+                        "Impact on people",
+                        "Potential for data management",
+                        "Potential for misuse",
+                        "Economic value of ethics",
+                        "Economics value of data"
+                    ],
+                    correct: [1,3,5],
+                    explanation: "Please refer to page 49 of DMBOK2."
+                },
+                {
+                    question: "Within the Data Handling Ethics Context Diagram a key deliverable is the Ethical Data Handling Strategy.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 50 of DMBOK2."
+                },
+                {
+                    question: "The Belmont principles that may be adapted for Information Management disciplines, include:",
+                    type: "multi-select",
+                    answers: [
+                        "Respect for Persons",
+                        "Respect for Machines",
+                        "Beneficence",
+                        "Criminality",
+                        "Justice"
+                    ],
+                    correct: [0,2,4],
+                    explanation: "Please refer to page 52 of DMBOK2."
+                },
+                {
+                    question: "Please select the correct principles of the General Data Protection Regulation (GDPR) of the EU.",
+                    type: "multi-select",
+                    answers: [
+                        "Purpose Limitation",
+                        "Data Minimisation",
+                        "Accuracy",
+                        "Storage Limitation",
+                        "Accountability",
+                        "All of the above"
+                    ],
+                    correct: [5],
+                    explanation: "Please refer to page 54 of DMBOK2."
+                },
+                {
+                    question: "Misleading visualisations could be an example where a base level of truthfulness and transparency are not adhered to.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 57 of DMBOK2."
+                },
+                {
+                    question: "Bias refers to an inclination of outlook. Please select the types of data bias:",
+                    type: "multi-select",
+                    answers: [
+                        "Data collection for pre-defined results",
+                        "Hunch and search",
+                        "Positive reinforcement",
+                        "Context and Emotion",
+                        "Biased use of data collected",
+                        "Biased sampling methodology"
+                    ],
+                    correct: [0,1,4,5],
+                    explanation: "Please refer to page 58-59 of DMBOK2."
+                },
+                {
+                    question: "If data is not integrated with care it presents risk for unethical data handling. These ethical risks intersect with fundamental problems in data management including: Limited knowledge of data's origin and lineage; Data of poor quality; Unreliable Metadata; and Documentation of error remediation.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 59-60 of DMBOK2."
+                },
+                {
+                    question: "Obfuscating or redacting data is the practice of making information anonymous ot removing sensitive information. Risks are present in the following instances:",
+                    type: "multi-select",
+                    answers: [
+                        "Data storage",
+                        "Data marketing",
+                        "Data aggregation",
+                        "Data marking",
+                        "Data masking",
+                        "Data integration"
+                    ],
+                    correct: [2,3,4],
+                    explanation: "Please refer to page 60 of DMBOK2."
+                },
+                {
+                    question: "Improving an organization's ethical behaviour requires an informal Organizational Change Management (OCM) process.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 61 of DMBOK2."
+                },
+                {
+                    question: "The principle of data minimisation means:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Collecting as much data as possible",
+                        "Collecting only what is necessary for the stated purpose",
+                        "Minimizing data storage costs",
+                        "Reducing data processing time"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 54 of DMBOK2."
+                },
+                {
+                    question: "Consent for data collection should be:",
+                    type: "multi-select",
+                    answers: [
+                        "Freely given",
+                        "Specific",
+                        "Informed",
+                        "Ambiguous",
+                        "Unambiguous"
+                    ],
+                    correct: [0,1,2,4],
+                    explanation: "Please refer to page 55 of DMBOK2."
+                }
+            ],
+            "Chapter 3: Data Governance": [
+                {
+                    question: "The purpose of data governance is to ensure that data is managed properly, according to policies and best practices. Data governance is focused on how decisions are made about data and how people and processes are expected to behave in relation to data.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 67-68 of DMBOK2."
+                },
+                {
+                    question: "The scope and focus of any data governance program depend on organizational needs, but most programs include:",
+                    type: "multi-select",
+                    answers: [
+                        "Strategy",
+                        "Policy",
+                        "Data Management Projects",
+                        "Compliance",
+                        "Oversight",
+                        "All of the above"
+                    ],
+                    correct: [5],
+                    explanation: "Please refer to page 68 of DMBOK2."
+                },
+                {
+                    question: "A goal of data governance is to enable an organisation to manage its data as a liability.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 69 of DMBOK2."
+                },
+                {
+                    question: "Drivers for data governance most often focus on reducing risk or improving processes. Please select the elements that relate to the reduction in risk:",
+                    type: "multi-select",
+                    answers: [
+                        "Specific risk management",
+                        "General risk management",
+                        "Data ethics",
+                        "Data security",
+                        "Publicity",
+                        "Privacy"
+                    ],
+                    correct: [1,3,5],
+                    explanation: "Please refer to page 70 of DMBOK2."
+                },
+                {
+                    question: "Drivers for data governance most often focus on reducing risk or improving processes. Please select the elements that relate to the improvement of processes:",
+                    type: "multi-select",
+                    answers: [
+                        "Regulatory compliance",
+                        "Data quality improvements",
+                        "Metadata management",
+                        "Efficiency in development projects",
+                        "Vendor management",
+                        "All of the above"
+                    ],
+                    correct: [5],
+                    explanation: "Please refer to page 70 of DMBOK2."
+                },
+                {
+                    question: "Data governance operating model components include:",
+                    type: "multi-select",
+                    answers: [
+                        "Organization and roles",
+                        "Governance processes",
+                        "Data rules and standards",
+                        "Metrics and scorecards",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 72 of DMBOK2."
+                },
+                {
+                    question: "The Data Governance Council typically includes:",
+                    type: "multi-select",
+                    answers: [
+                        "Senior business executives",
+                        "IT leadership",
+                        "Data stewards",
+                        "Legal representatives",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 73 of DMBOK2."
+                }
+            ],
+            "Chapter 4: Data Architecture": [
+                {
+                    question: "Data architecture describes the structure of an organization's logical and physical data assets and data management resources.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 87 of DMBOK2."
+                },
+                {
+                    question: "Which of the following are components of data architecture?",
+                    type: "multi-select",
+                    answers: [
+                        "Data models",
+                        "Data flows",
+                        "Data stores",
+                        "Data processing",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 88 of DMBOK2."
+                },
+                {
+                    question: "Enterprise data architecture describes:",
+                    type: "multi-select",
+                    answers: [
+                        "Data strategy and business case",
+                        "Operating data model",
+                        "Data integration architecture",
+                        "Data governance",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 89 of DMBOK2."
+                },
+                {
+                    question: "Data architecture principles should be:",
+                    type: "multi-select",
+                    answers: [
+                        "Business-driven",
+                        "Technology-independent",
+                        "Consistent with enterprise architecture",
+                        "Flexible and adaptable",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 90 of DMBOK2."
+                }
+            ],
+            "Chapter 5: Data Modeling and Design": [
+                {
+                    question: "Data modeling is the process of discovering, analyzing and scoping data requirements, and then representing and communicating these data requirements in a precise form called the data model.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 127 of DMBOK2."
+                },
+                {
+                    question: "Which are the three levels of data modeling?",
+                    type: "multi-select",
+                    answers: [
+                        "Conceptual",
+                        "Logical",
+                        "Physical",
+                        "Technical",
+                        "Semantic"
+                    ],
+                    correct: [0,1,2],
+                    explanation: "Please refer to page 128 of DMBOK2."
+                },
+                {
+                    question: "A conceptual data model:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Contains detailed attribute definitions",
+                        "Shows high-level business concepts and relationships",
+                        "Includes physical implementation details",
+                        "Specifies database table structures"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 129 of DMBOK2."
+                },
+                {
+                    question: "Normalization in data modeling aims to:",
+                    type: "multi-select",
+                    answers: [
+                        "Eliminate data redundancy",
+                        "Ensure data integrity",
+                        "Improve performance",
+                        "Reduce storage requirements",
+                        "All of the above except performance"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 140 of DMBOK2."
+                }
+            ],
+            "Chapter 6: Data Storage and Operations": [
+                {
+                    question: "Data storage and operations includes the design, implementation and support of stored data, to maximize its value throughout its lifecycle.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 177 of DMBOK2."
+                },
+                {
+                    question: "Database management activities include:",
+                    type: "multi-select",
+                    answers: [
+                        "Performance monitoring",
+                        "Backup and recovery",
+                        "Security management",
+                        "Capacity planning",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 180 of DMBOK2."
+                },
+                {
+                    question: "Database backup strategies include:",
+                    type: "multi-select",
+                    answers: [
+                        "Full backups",
+                        "Incremental backups",
+                        "Differential backups",
+                        "Transaction log backups",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 185 of DMBOK2."
+                },
+                {
+                    question: "Database performance tuning involves:",
+                    type: "multi-select",
+                    answers: [
+                        "Index optimization",
+                        "Query optimization",
+                        "Storage optimization",
+                        "Memory management",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 190 of DMBOK2."
+                }
+            ],
+            "Chapter 7: Data Security": [
+                {
+                    question: "Data security ensures that data privacy and confidentiality are maintained, that data is not breached, and that data is accessed appropriately.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 223 of DMBOK2."
+                },
+                {
+                    question: "The CIA triad in data security stands for:",
+                    type: "multi-select",
+                    answers: [
+                        "Confidentiality",
+                        "Integrity",
+                        "Availability",
+                        "Authentication",
+                        "Authorization"
+                    ],
+                    correct: [0,1,2],
+                    explanation: "Please refer to page 224 of DMBOK2."
+                },
+                {
+                    question: "Access control methods include:",
+                    type: "multi-select",
+                    answers: [
+                        "Role-based access control (RBAC)",
+                        "Attribute-based access control (ABAC)",
+                        "Mandatory access control (MAC)",
+                        "Discretionary access control (DAC)",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 235 of DMBOK2."
+                },
+                {
+                    question: "Data encryption can be applied at:",
+                    type: "multi-select",
+                    answers: [
+                        "Data at rest",
+                        "Data in transit",
+                        "Data in use",
+                        "Database level",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 240 of DMBOK2."
+                },
+                {
+                    question: "Data loss prevention (DLP) tools help:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Prevent unauthorized data access",
+                        "Monitor and prevent data exfiltration",
+                        "Encrypt sensitive data",
+                        "Backup critical data"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 245 of DMBOK2."
+                },
+                {
+                    question: "Security audit activities include:",
+                    type: "multi-select",
+                    answers: [
+                        "Access log review",
+                        "Vulnerability assessments",
+                        "Penetration testing",
+                        "Compliance validation",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 250 of DMBOK2."
+                },
+                {
+                    question: "Data privacy regulations include:",
+                    type: "multi-select",
+                    answers: [
+                        "GDPR (General Data Protection Regulation)",
+                        "CCPA (California Consumer Privacy Act)",
+                        "PIPEDA (Personal Information Protection and Electronic Documents Act)",
+                        "HIPAA (Health Insurance Portability and Accountability Act)",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 255 of DMBOK2."
+                },
+                {
+                    question: "Incident response planning should include:",
+                    type: "multi-select",
+                    answers: [
+                        "Detection procedures",
+                        "Response team roles",
+                        "Communication protocols",
+                        "Recovery procedures",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 260 of DMBOK2."
+                },
+                {
+                    question: "Data classification schemes help:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Determine appropriate security controls",
+                        "Improve data quality",
+                        "Reduce storage costs",
+                        "Increase processing speed"
+                    ],
+                    correct: [0],
+                    explanation: "Please refer to page 230 of DMBOK2."
+                }
+            ],
+            "Chapter 8: Data Integration and Interoperability": [
+                {
+                    question: "Data integration involves combining data from different sources to provide users with a unified view.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 267 of DMBOK2."
+                },
+                {
+                    question: "Common data integration approaches include:",
+                    type: "multi-select",
+                    answers: [
+                        "ETL (Extract, Transform, Load)",
+                        "ELT (Extract, Load, Transform)",
+                        "Data virtualization",
+                        "Data replication",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 270 of DMBOK2."
+                },
+                {
+                    question: "Data integration challenges include:",
+                    type: "multi-select",
+                    answers: [
+                        "Data format differences",
+                        "Semantic inconsistencies",
+                        "Data quality issues",
+                        "Performance bottlenecks",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 275 of DMBOK2."
+                },
+                {
+                    question: "Master data integration patterns include:",
+                    type: "multi-select",
+                    answers: [
+                        "Registry style",
+                        "Repository style",
+                        "Hybrid style",
+                        "Transactional style",
+                        "All of the above except transactional"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 280 of DMBOK2."
+                },
+                {
+                    question: "Data lineage tracking provides:",
+                    type: "multi-select",
+                    answers: [
+                        "Source-to-target mapping",
+                        "Transformation logic",
+                        "Data flow visualization",
+                        "Impact analysis",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 285 of DMBOK2."
+                },
+                {
+                    question: "Real-time data integration requires:",
+                    type: "multi-select",
+                    answers: [
+                        "Change data capture (CDC)",
+                        "Message queuing systems",
+                        "Event-driven architecture",
+                        "Stream processing",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 290 of DMBOK2."
+                },
+                {
+                    question: "Data service architecture benefits include:",
+                    type: "multi-select",
+                    answers: [
+                        "Reusability",
+                        "Loose coupling",
+                        "Scalability",
+                        "Agility",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 295 of DMBOK2."
+                },
+                {
+                    question: "API management for data services includes:",
+                    type: "multi-select",
+                    answers: [
+                        "API design and documentation",
+                        "Security and access control",
+                        "Performance monitoring",
+                        "Version management",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 300 of DMBOK2."
+                },
+                {
+                    question: "Data federation allows:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Physical consolidation of data",
+                        "Virtual integration without moving data",
+                        "Permanent data storage",
+                        "Data compression"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 305 of DMBOK2."
+                }
+            ],
+            "Chapter 9: Document and Content Management": [
+                {
+                    question: "Document and content management controls the capture, storage, access, and use of data and information stored outside of databases.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 321 of DMBOK2."
+                },
+                {
+                    question: "Key components of content management include:",
+                    type: "multi-select",
+                    answers: [
+                        "Content creation",
+                        "Content organization",
+                        "Content retrieval",
+                        "Content preservation",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 322 of DMBOK2."
+                },
+                {
+                    question: "Document lifecycle stages include:",
+                    type: "multi-select",
+                    answers: [
+                        "Creation",
+                        "Review and approval",
+                        "Publication",
+                        "Retention",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 325 of DMBOK2."
+                },
+                {
+                    question: "Content metadata typically includes:",
+                    type: "multi-select",
+                    answers: [
+                        "Title and description",
+                        "Author and creation date",
+                        "Subject and keywords",
+                        "Format and size",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 328 of DMBOK2."
+                },
+                {
+                    question: "Digital asset management systems provide:",
+                    type: "multi-select",
+                    answers: [
+                        "Centralized storage",
+                        "Metadata management",
+                        "Version control",
+                        "Access control",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 330 of DMBOK2."
+                },
+                {
+                    question: "Records management includes:",
+                    type: "multi-select",
+                    answers: [
+                        "Classification schemes",
+                        "Retention schedules",
+                        "Disposition procedures",
+                        "Legal hold management",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 335 of DMBOK2."
+                },
+                {
+                    question: "Email management challenges include:",
+                    type: "multi-select",
+                    answers: [
+                        "Volume and growth",
+                        "Storage costs",
+                        "Legal and compliance requirements",
+                        "Information governance",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 338 of DMBOK2."
+                },
+                {
+                    question: "Web content management features include:",
+                    type: "multi-select",
+                    answers: [
+                        "Content authoring tools",
+                        "Workflow management",
+                        "Template management",
+                        "Multi-site publishing",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 340 of DMBOK2."
+                },
+                {
+                    question: "Content archiving strategies should consider:",
+                    type: "multi-select",
+                    answers: [
+                        "Legal and regulatory requirements",
+                        "Business value and usage patterns",
+                        "Technical migration needs",
+                        "Cost and storage considerations",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 342 of DMBOK2."
+                }
+            ],
+            "Chapter 10: Reference and Master Data": [
+                {
+                    question: "Master data represents the critical nouns of a business and can be defined as the consistent and uniform set of identifiers and extended attributes.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 347 of DMBOK2."
+                },
+                {
+                    question: "Types of reference data include:",
+                    type: "multi-select",
+                    answers: [
+                        "Code sets",
+                        "Lookup tables",
+                        "Valid values",
+                        "Classification schemes",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 348 of DMBOK2."
+                }
+            ],
+            "Chapter 11: Data Warehousing and Business Intelligence": [
+                {
+                    question: "A data warehouse is a copy of transaction data specifically structured for query and analysis.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 389 of DMBOK2."
+                },
+                {
+                    question: "Key characteristics of a data warehouse include:",
+                    type: "multi-select",
+                    answers: [
+                        "Subject-oriented",
+                        "Integrated",
+                        "Time-variant",
+                        "Non-volatile",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 390 of DMBOK2."
+                }
+            ],
+            "Chapter 12: Metadata Management": [
+                {
+                    question: "Metadata is data about data. It describes the characteristics of data and provides context that makes data meaningful.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 431 of DMBOK2."
+                },
+                {
+                    question: "Types of metadata include:",
+                    type: "multi-select",
+                    answers: [
+                        "Technical metadata",
+                        "Business metadata",
+                        "Process metadata",
+                        "Operational metadata",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 432 of DMBOK2."
+                }
+            ],
+            "Chapter 13: Data Quality": [
+                {
+                    question: "Data quality refers to the state of qualitative or quantitative pieces of information.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 467 of DMBOK2."
+                },
+                {
+                    question: "Common data quality dimensions include:",
+                    type: "multi-select",
+                    answers: [
+                        "Completeness",
+                        "Uniqueness",
+                        "Timeliness",
+                        "Validity",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 468 of DMBOK2."
+                }
+            ],
+            "Chapter 14: Big Data and Data Science": [
+                {
+                    question: "Big data is characterized by the three Vs: Volume, Velocity, and Variety.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 515 of DMBOK2."
+                },
+                {
+                    question: "Data science activities include:",
+                    type: "multi-select",
+                    answers: [
+                        "Data exploration",
+                        "Model development",
+                        "Model validation",
+                        "Model deployment",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 520 of DMBOK2."
+                }
+            ],
+            "Chapter 15: Data Management Maturity Assessment": [
+                {
+                    question: "Data management maturity assessment helps organizations understand their current data management capabilities and identify areas for improvement.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 559 of DMBOK2."
+                },
+                {
+                    question: "Maturity models typically include levels such as:",
+                    type: "multi-select",
+                    answers: [
+                        "Initial",
+                        "Developing",
+                        "Defined",
+                        "Managed",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 560 of DMBOK2."
+                }
+            ],
+            "Chapter 16: Data Management Organization and Role Expectations": [
+                {
+                    question: "Successful data management requires people with different skills working together in defined roles with clear responsibilities.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 579 of DMBOK2."
+                },
+                {
+                    question: "Key data management roles include:",
+                    type: "multi-select",
+                    answers: [
+                        "Data Steward",
+                        "Data Architect",
+                        "Database Administrator",
+                        "Data Analyst",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 580 of DMBOK2."
+                }
+            ],
+            "Chapter 17: Data Management and Organizational Change Management": [
+                {
+                    question: "Organizational change management is critical for successful data management initiatives.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 607 of DMBOK2."
+                },
+                {
+                    question: "Key elements of change management include:",
+                    type: "multi-select",
+                    answers: [
+                        "Communication",
+                        "Training",
+                        "Leadership support",
+                        "Cultural change",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 608 of DMBOK2."
+                },
+                {
+                    question: "Resistance to change in data management initiatives often comes from:",
+                    type: "multi-select",
+                    answers: [
+                        "Fear of job loss",
+                        "Comfort with current processes",
+                        "Lack of understanding of benefits",
+                        "Technical complexity",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 610 of DMBOK2."
+                },
+                {
+                    question: "Success factors for data management change include:",
+                    type: "multi-select",
+                    answers: [
+                        "Executive sponsorship",
+                        "Clear communication",
+                        "Adequate training",
+                        "Phased implementation",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 612 of DMBOK2."
+                }
+            ]
+        };
+
+        let currentQuiz = [];
+        let currentQuestionIndex = 0;
+        let userAnswers = [];
+        let selectedMode = '';
+        let quizStarted = false;
+
+        // Initialize the app
+        function initApp() {
+            console.log("initApp called");
+            console.log("examData keys:", Object.keys(examData));
+            populateChapters();
+            setupEventListeners();
+        }
+
+        function setupEventListeners() {
+            // Setup select/deselect all buttons
+            document.getElementById('selectAllBtn').addEventListener('click', selectAllChapters);
+            document.getElementById('deselectAllBtn').addEventListener('click', deselectAllChapters);
+            
+            // Setup mode selection
+            document.getElementById('practiceMode').addEventListener('click', () => selectMode('practice'));
+            document.getElementById('examMode').addEventListener('click', () => selectMode('exam'));
+            
+            // Setup start button
+            document.getElementById('startBtn').addEventListener('click', startQuiz);
+            
+            // Setup navigation buttons
+            document.getElementById('prevBtn').addEventListener('click', previousQuestion);
+            document.getElementById('nextBtn').addEventListener('click', nextQuestion);
+            
+            // Setup restart button
+            document.getElementById('restartBtn').addEventListener('click', restartQuiz);
+        }
+
+        function populateChapters() {
+            console.log("populateChapters called");
+            const grid = document.getElementById('chapterGrid');
+            console.log("Grid element:", grid);
+            grid.innerHTML = '';
+
+            Object.keys(examData).forEach((chapter, index) => {
+                console.log(`Creating chapter: ${chapter}, index: ${index}`);
+                const questionCount = examData[chapter].length;
+                const div = document.createElement('div');
+                div.className = 'chapter-item';
+                
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `chapter-${index}`;
+                checkbox.addEventListener('change', () => toggleChapterByIndex(index));
+                
+                const titleDiv = document.createElement('div');
+                titleDiv.className = 'chapter-title';
+                titleDiv.textContent = chapter;
+                
+                const countDiv = document.createElement('div');
+                countDiv.className = 'chapter-count';
+                countDiv.textContent = `${questionCount} questions`;
+                
+                div.appendChild(checkbox);
+                div.appendChild(titleDiv);
+                div.appendChild(countDiv);
+                
+                div.onclick = (e) => {
+                    if (e.target !== checkbox) {
+                        checkbox.checked = !checkbox.checked;
+                        toggleChapterByIndex(index);
+                    }
+                };
+
+                grid.appendChild(div);
+            });
+        }
+
+        function toggleChapterByIndex(index) {
+            const checkbox = document.getElementById(`chapter-${index}`);
+            const item = checkbox.closest('.chapter-item');
+
+            if (checkbox.checked) {
+                item.classList.add('selected');
+            } else {
+                item.classList.remove('selected');
+            }
+
+            updateStartButton();
+        }
+
+        function toggleChapter(chapter) {
+            const index = Object.keys(examData).indexOf(chapter);
+            toggleChapterByIndex(index);
+        }
+
+        function selectAllChapters() {
+            const checkboxes = document.querySelectorAll('#chapterGrid input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = true;
+                checkbox.closest('.chapter-item').classList.add('selected');
+            });
+            updateStartButton();
+        }
+
+        function deselectAllChapters() {
+            const checkboxes = document.querySelectorAll('#chapterGrid input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.closest('.chapter-item').classList.remove('selected');
+            });
+            updateStartButton();
+        }
+
+        function selectMode(mode) {
+            selectedMode = mode;
+            document.querySelectorAll('.mode-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            document.querySelector(`#${mode}`).checked = true;
+            document.querySelector(`#${mode}`).closest('.mode-option').classList.add('selected');
+            updateStartButton();
+        }
+
+        function updateStartButton() {
+            const selectedChapters = document.querySelectorAll('#chapterGrid input[type="checkbox"]:checked');
+            const startBtn = document.getElementById('startBtn');
+
+            if (selectedChapters.length > 0 && selectedMode) {
+                startBtn.disabled = false;
+            } else {
+                startBtn.disabled = true;
+            }
+        }
+
+        function startQuiz() {
+            // Collect selected chapters
+            const selectedChapters = [];
+            document.querySelectorAll('#chapterGrid input[type="checkbox"]:checked').forEach(checkbox => {
+                const chapterItem = checkbox.closest('.chapter-item');
+                const chapterTitle = chapterItem.querySelector('.chapter-title').textContent;
+                selectedChapters.push(chapterTitle);
+            });
+
+            // Collect questions from selected chapters
+            currentQuiz = [];
+            selectedChapters.forEach(chapter => {
+                if (examData[chapter]) {
+                    currentQuiz.push(...examData[chapter]);
+                }
+            });
+
+            // Shuffle questions
+            currentQuiz = shuffleArray(currentQuiz);
+
+            // Initialize quiz state
+            currentQuestionIndex = 0;
+            userAnswers = new Array(currentQuiz.length).fill(null);
+
+            // Show quiz section
+            document.getElementById('setup').style.display = 'none';
+            document.getElementById('quiz').style.display = 'block';
+
+            // Display first question
+            displayQuestion();
+            updateNavigation();
+            updateProgress();
+        }
+
+        function shuffleArray(array) {
+            const shuffled = [...array];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        }
+
+        function displayQuestion() {
+            const question = currentQuiz[currentQuestionIndex];
+            const card = document.getElementById('questionCard');
+
+            let answersHTML = '';
+            question.answers.forEach((answer, index) => {
+                const inputType = question.type === 'multi-select' ? 'checkbox' : 'radio';
+                const inputName = question.type === 'multi-select' ? `answer-${currentQuestionIndex}-${index}` : `answer-${currentQuestionIndex}`;
+                const isSelected = userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].includes(index);
+
+                answersHTML += `
+                    <div class="answer-option ${isSelected ? 'selected' : ''}" data-answer="${index}">
+                        <input type="${inputType}" name="${inputName}" value="${index}" ${isSelected ? 'checked' : ''}>
+                        <div class="answer-text">${answer}</div>
+                    </div>
+                `;
+            });
+
+            card.innerHTML = `
+                <div class="question-header">
+                    <div class="question-number">Question ${currentQuestionIndex + 1} of ${currentQuiz.length}</div>
+                    <div class="question-type">${question.type}</div>
+                </div>
+                <div class="question-text">${question.question}</div>
+                <div class="answers">
+                    ${answersHTML}
+                </div>
+                <div class="feedback" id="feedback"></div>
+            `;
+
+            // Add event listeners to answer options
+            document.querySelectorAll('.answer-option').forEach(option => {
+                option.addEventListener('click', (e) => {
+                    const answerIndex = parseInt(option.dataset.answer);
+                    const input = option.querySelector('input');
+                    
+                    if (e.target !== input) {
+                        if (question.type === 'multiple-choice') {
+                            input.checked = true;
+                        } else {
+                            input.checked = !input.checked;
+                        }
+                    }
+                    selectAnswer(answerIndex);
+                });
+            });
+        }
+
+        function selectAnswer(answerIndex) {
+            const question = currentQuiz[currentQuestionIndex];
+
+            if (question.type === 'multi-select') {
+                // Handle multi-select
+                if (!userAnswers[currentQuestionIndex]) {
+                    userAnswers[currentQuestionIndex] = [];
+                }
+
+                const answerArray = userAnswers[currentQuestionIndex];
+                const existingIndex = answerArray.indexOf(answerIndex);
+
+                if (existingIndex > -1) {
+                    answerArray.splice(existingIndex, 1);
+                } else {
+                    answerArray.push(answerIndex);
+                }
+            } else {
+                // Handle single select
+                userAnswers[currentQuestionIndex] = [answerIndex];
+            }
+
+            // Update visual selection
+            document.querySelectorAll('.answer-option').forEach((option, index) => {
+                const checkbox = option.querySelector('input');
+                if (userAnswers[currentQuestionIndex] && userAnswers[currentQuestionIndex].includes(index)) {
+                    option.classList.add('selected');
+                    checkbox.checked = true;
+                } else {
+                    option.classList.remove('selected');
+                    checkbox.checked = false;
+                }
+            });
+
+            // Show feedback in practice mode
+            if (selectedMode === 'practice') {
+                showFeedback();
+            }
+        }
+
+        function showFeedback() {
+            const question = currentQuiz[currentQuestionIndex];
+            const userAnswer = userAnswers[currentQuestionIndex];
+            const feedback = document.getElementById('feedback');
+
+            if (!userAnswer || userAnswer.length === 0) {
+                feedback.style.display = 'none';
+                return;
+            }
+
+            const isCorrect = arraysEqual(userAnswer.sort(), question.correct.sort());
+
+            // Update answer options visual feedback
+            document.querySelectorAll('.answer-option').forEach((option, index) => {
+                option.classList.remove('correct', 'incorrect');
+                if (question.correct.includes(index)) {
+                    option.classList.add('correct');
+                } else if (userAnswer.includes(index)) {
+                    option.classList.add('incorrect');
+                }
+            });
+
+            feedback.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            feedback.innerHTML = `
+                <strong>${isCorrect ? 'Correct!' : 'Incorrect'}</strong><br>
+                ${question.explanation}
+            `;
+            feedback.style.display = 'block';
+        }
+
+        function arraysEqual(a, b) {
+            return a.length === b.length && a.every(val => b.includes(val));
+        }
+
+        function nextQuestion() {
+            if (currentQuestionIndex < currentQuiz.length - 1) {
+                currentQuestionIndex++;
+                displayQuestion();
+                updateNavigation();
+                updateProgress();
+            } else {
+                finishQuiz();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                displayQuestion();
+                updateNavigation();
+                updateProgress();
+            }
+        }
+
+        function updateNavigation() {
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const counter = document.getElementById('questionCounter');
+
+            prevBtn.disabled = currentQuestionIndex === 0;
+
+            if (currentQuestionIndex === currentQuiz.length - 1) {
+                nextBtn.textContent = 'Finish';
+            } else {
+                nextBtn.textContent = 'Next';
+            }
+
+            counter.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuiz.length}`;
+        }
+
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / currentQuiz.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+        }
+
+        function finishQuiz() {
+            calculateResults();
+            document.getElementById('quiz').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function calculateResults() {
+            let correctCount = 0;
+
+            currentQuiz.forEach((question, index) => {
+                const userAnswer = userAnswers[index];
+                if (userAnswer && arraysEqual(userAnswer.sort(), question.correct.sort())) {
+                    correctCount++;
+                }
+            });
+
+            const totalQuestions = currentQuiz.length;
+            const percentage = Math.round((correctCount / totalQuestions) * 100);
+
+            document.getElementById('finalScore').textContent = percentage + '%';
+            document.getElementById('correctCount').textContent = correctCount;
+            document.getElementById('incorrectCount').textContent = totalQuestions - correctCount;
+            document.getElementById('totalQuestions').textContent = totalQuestions;
+        }
+
+        function restartQuiz() {
+            // Reset everything
+            currentQuiz = [];
+            currentQuestionIndex = 0;
+            userAnswers = [];
+            selectedMode = '';
+
+            // Show setup section
+            document.getElementById('results').style.display = 'none';
+            document.getElementById('setup').style.display = 'block';
+
+            // Reset form
+            document.querySelectorAll('#chapterGrid input[type="checkbox"]').forEach(cb => {
+                cb.checked = false;
+                cb.closest('.chapter-item').classList.remove('selected');
+            });
+
+            document.querySelectorAll('input[name="mode"]').forEach(radio => {
+                radio.checked = false;
+            });
+
+            document.querySelectorAll('.mode-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+
+            updateStartButton();
+        }
+
+        // Initialize the app when page loads
+        window.onload = initApp;

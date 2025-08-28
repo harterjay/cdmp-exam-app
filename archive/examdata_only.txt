@@ -1,0 +1,1025 @@
+        const examData = {
+            "Chapter 1: Data Management": [
+                {
+                    question: "Please select the correct definition of Data Management from the options below.",
+                    type: "multiple-choice",
+                    answers: [
+                        "Data Management is the strict control of all plans, policies, programs and practices that enable the business strategy to be successfully executed.",
+                        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of data and information assets throughout their lifecycles.",
+                        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of data assets throughout their lifecycles.",
+                        "Data Management is the development, execution and supervision of plans, policies, programs and practices that deliver, control, protect and enhance the value of information assets throughout their lifecycles."
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 17 of DMBOK2."
+                },
+                {
+                    question: "Data Management Professionals only work with the technical aspects related to data.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 17 of DMBOK2."
+                },
+                {
+                    question: "Differentiating between data and information. Please select the correct answers based on the sentence below: Here is a marketing report for the last month [1]. It is based on data from our data warehouse [2]. Next month these results [3] will be used to generate our month-over-month performance measure [4].",
+                    type: "multiple-choice",
+                    answers: [
+                        "[1] Information, [2] Information, [3] Data, [4] Information",
+                        "[1] Data, [2] Information, [3] Data, [4] Data",
+                        "[1] Data, [2] Data, [3] Data, [4] Information",
+                        "[1] Information, [2] Data, [3] Data, [4] Information"
+                    ],
+                    correct: [3],
+                    explanation: "Please refer to page 17 of DMBOK2."
+                },
+                {
+                    question: "Please select the answers that correctly describes the set of principles that recognizes salient features of data management and guide data management practice.",
+                    type: "multi-select",
+                    answers: [
+                        "Data is an asset with unique properties.",
+                        "It takes Metadata to manage data.",
+                        "The most important part of data management is security.",
+                        "Data management is lifecycle management.",
+                        "Effective data management requires leadership commitment.",
+                        "Efficient data management requires a team of IT professionals only."
+                    ],
+                    correct: [0,1,3,4],
+                    explanation: "Please refer to page 22-23 of DMBOK2."
+                },
+                {
+                    question: "Value is the difference between the cost of a thing and the benefit derived from that thing.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 24 of DMBOK2."
+                },
+                {
+                    question: "Please select the correct general cost and benefit categories that can be applied consistently within an organization.",
+                    type: "multi-select",
+                    answers: [
+                        "Cost of erasing data from servers",
+                        "Cost of improving data",
+                        "What the data could be sold for",
+                        "Benefit of higher quality data",
+                        "Cost of replacing data if it were lost",
+                        "What competitors would pay for data"
+                    ],
+                    correct: [1,2,3,4,5],
+                    explanation: "Please refer to page 24 of DMBOK2."
+                },
+                {
+                    question: "Please select the answers that correctly describes where the costs of poor quality data comes from.",
+                    type: "multi-select",
+                    answers: [
+                        "Scrap and rework",
+                        "Organizational conflict",
+                        "High job satisfaction",
+                        "High productivity",
+                        "Reputational costs",
+                        "Compliance costs"
+                    ],
+                    correct: [0,1,4,5],
+                    explanation: "Please refer to page 25-26 of DMBOK2."
+                },
+                {
+                    question: "Reduced risk is a benefit of high quality data.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 25-26 of DMBOK2."
+                },
+                {
+                    question: "The better an organization understands the lifecycle and lineage of its data, the better able it will be to manage its data. Please select correct implication of the focus of data management on the data lifecycle.",
+                    type: "multiple-choice",
+                    answers: [
+                        "Data Quality must be managed throughout the data lifecycle",
+                        "Data Security must only be managed at the start of the data lifecycle",
+                        "Metadata Quality is the most important part of the management process",
+                        "Data Management efforts should focus on the most critical data last"
+                    ],
+                    correct: [0],
+                    explanation: "Please refer to page 29 of DMBOK2."
+                },
+                {
+                    question: "Information gaps represent enterprise liabilities with potentially profound impacts on operational effectiveness and profitability.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 30 of DMBOK2."
+                },
+                {
+                    question: "The DMBOK2 identifies how many knowledge areas for data management?",
+                    type: "multiple-choice",
+                    answers: ["15", "17", "19", "21"],
+                    correct: [1],
+                    explanation: "Please refer to page 19 of DMBOK2."
+                },
+                {
+                    question: "Which principle states that different types of data have different lifecycle requirements?",
+                    type: "multiple-choice",
+                    answers: [
+                        "Data is an asset with unique properties",
+                        "The value of data can be and should be expressed in economic terms",
+                        "Managing data means managing the quality of data",
+                        "Data management is lifecycle management"
+                    ],
+                    correct: [3],
+                    explanation: "Please refer to page 28 of DMBOK2."
+                }
+            ],
+            "Chapter 2: Data Handling Ethics": [
+                {
+                    question: "Data handling ethics are concerned with how to procure, store, manage, use and dispose of data in ways that are aligned with ethical principles.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 49 of DMBOK2."
+                },
+                {
+                    question: "The ethics of data handling are complex, but is centred on several core concepts. Please select the correct answers.",
+                    type: "multi-select",
+                    answers: [
+                        "Impact on machines",
+                        "Impact on people",
+                        "Potential for data management",
+                        "Potential for misuse",
+                        "Economic value of ethics",
+                        "Economics value of data"
+                    ],
+                    correct: [1,3,5],
+                    explanation: "Please refer to page 49 of DMBOK2."
+                },
+                {
+                    question: "Within the Data Handling Ethics Context Diagram a key deliverable is the Ethical Data Handling Strategy.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 50 of DMBOK2."
+                },
+                {
+                    question: "The Belmont principles that may be adapted for Information Management disciplines, include:",
+                    type: "multi-select",
+                    answers: [
+                        "Respect for Persons",
+                        "Respect for Machines",
+                        "Beneficence",
+                        "Criminality",
+                        "Justice"
+                    ],
+                    correct: [0,2,4],
+                    explanation: "Please refer to page 52 of DMBOK2."
+                },
+                {
+                    question: "Please select the correct principles of the General Data Protection Regulation (GDPR) of the EU.",
+                    type: "multi-select",
+                    answers: [
+                        "Purpose Limitation",
+                        "Data Minimisation",
+                        "Accuracy",
+                        "Storage Limitation",
+                        "Accountability",
+                        "All of the above"
+                    ],
+                    correct: [5],
+                    explanation: "Please refer to page 54 of DMBOK2."
+                },
+                {
+                    question: "Misleading visualisations could be an example where a base level of truthfulness and transparency are not adhered to.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 57 of DMBOK2."
+                },
+                {
+                    question: "Bias refers to an inclination of outlook. Please select the types of data bias:",
+                    type: "multi-select",
+                    answers: [
+                        "Data collection for pre-defined results",
+                        "Hunch and search",
+                        "Positive reinforcement",
+                        "Context and Emotion",
+                        "Biased use of data collected",
+                        "Biased sampling methodology"
+                    ],
+                    correct: [0,1,4,5],
+                    explanation: "Please refer to page 58-59 of DMBOK2."
+                },
+                {
+                    question: "If data is not integrated with care it presents risk for unethical data handling. These ethical risks intersect with fundamental problems in data management including: Limited knowledge of data's origin and lineage; Data of poor quality; Unreliable Metadata; and Documentation of error remediation.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 59-60 of DMBOK2."
+                },
+                {
+                    question: "Obfuscating or redacting data is the practice of making information anonymous ot removing sensitive information. Risks are present in the following instances:",
+                    type: "multi-select",
+                    answers: [
+                        "Data storage",
+                        "Data marketing",
+                        "Data aggregation",
+                        "Data marking",
+                        "Data masking",
+                        "Data integration"
+                    ],
+                    correct: [2,3,4],
+                    explanation: "Please refer to page 60 of DMBOK2."
+                },
+                {
+                    question: "Improving an organization's ethical behaviour requires an informal Organizational Change Management (OCM) process.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 61 of DMBOK2."
+                },
+                {
+                    question: "The principle of data minimisation means:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Collecting as much data as possible",
+                        "Collecting only what is necessary for the stated purpose",
+                        "Minimizing data storage costs",
+                        "Reducing data processing time"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 54 of DMBOK2."
+                },
+                {
+                    question: "Consent for data collection should be:",
+                    type: "multi-select",
+                    answers: [
+                        "Freely given",
+                        "Specific",
+                        "Informed",
+                        "Ambiguous",
+                        "Unambiguous"
+                    ],
+                    correct: [0,1,2,4],
+                    explanation: "Please refer to page 55 of DMBOK2."
+                }
+            ],
+            "Chapter 3: Data Governance": [
+                {
+                    question: "The purpose of data governance is to ensure that data is managed properly, according to policies and best practices. Data governance is focused on how decisions are made about data and how people and processes are expected to behave in relation to data.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 67-68 of DMBOK2."
+                },
+                {
+                    question: "The scope and focus of any data governance program depend on organizational needs, but most programs include:",
+                    type: "multi-select",
+                    answers: [
+                        "Strategy",
+                        "Policy",
+                        "Data Management Projects",
+                        "Compliance",
+                        "Oversight",
+                        "All of the above"
+                    ],
+                    correct: [5],
+                    explanation: "Please refer to page 68 of DMBOK2."
+                },
+                {
+                    question: "A goal of data governance is to enable an organisation to manage its data as a liability.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [1],
+                    explanation: "Please refer to page 69 of DMBOK2."
+                },
+                {
+                    question: "Drivers for data governance most often focus on reducing risk or improving processes. Please select the elements that relate to the reduction in risk:",
+                    type: "multi-select",
+                    answers: [
+                        "Specific risk management",
+                        "General risk management",
+                        "Data ethics",
+                        "Data security",
+                        "Publicity",
+                        "Privacy"
+                    ],
+                    correct: [1,3,5],
+                    explanation: "Please refer to page 70 of DMBOK2."
+                },
+                {
+                    question: "Drivers for data governance most often focus on reducing risk or improving processes. Please select the elements that relate to the improvement of processes:",
+                    type: "multi-select",
+                    answers: [
+                        "Regulatory compliance",
+                        "Data quality improvements",
+                        "Metadata management",
+                        "Efficiency in development projects",
+                        "Vendor management",
+                        "All of the above"
+                    ],
+                    correct: [5],
+                    explanation: "Please refer to page 70 of DMBOK2."
+                },
+                {
+                    question: "Data governance operating model components include:",
+                    type: "multi-select",
+                    answers: [
+                        "Organization and roles",
+                        "Governance processes",
+                        "Data rules and standards",
+                        "Metrics and scorecards",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 72 of DMBOK2."
+                },
+                {
+                    question: "The Data Governance Council typically includes:",
+                    type: "multi-select",
+                    answers: [
+                        "Senior business executives",
+                        "IT leadership",
+                        "Data stewards",
+                        "Legal representatives",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 73 of DMBOK2."
+                }
+            ],
+            "Chapter 4: Data Architecture": [
+                {
+                    question: "Data architecture describes the structure of an organization's logical and physical data assets and data management resources.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 87 of DMBOK2."
+                },
+                {
+                    question: "Which of the following are components of data architecture?",
+                    type: "multi-select",
+                    answers: [
+                        "Data models",
+                        "Data flows",
+                        "Data stores",
+                        "Data processing",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 88 of DMBOK2."
+                },
+                {
+                    question: "Enterprise data architecture describes:",
+                    type: "multi-select",
+                    answers: [
+                        "Data strategy and business case",
+                        "Operating data model",
+                        "Data integration architecture",
+                        "Data governance",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 89 of DMBOK2."
+                },
+                {
+                    question: "Data architecture principles should be:",
+                    type: "multi-select",
+                    answers: [
+                        "Business-driven",
+                        "Technology-independent",
+                        "Consistent with enterprise architecture",
+                        "Flexible and adaptable",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 90 of DMBOK2."
+                }
+            ],
+            "Chapter 5: Data Modeling and Design": [
+                {
+                    question: "Data modeling is the process of discovering, analyzing and scoping data requirements, and then representing and communicating these data requirements in a precise form called the data model.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 127 of DMBOK2."
+                },
+                {
+                    question: "Which are the three levels of data modeling?",
+                    type: "multi-select",
+                    answers: [
+                        "Conceptual",
+                        "Logical",
+                        "Physical",
+                        "Technical",
+                        "Semantic"
+                    ],
+                    correct: [0,1,2],
+                    explanation: "Please refer to page 128 of DMBOK2."
+                },
+                {
+                    question: "A conceptual data model:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Contains detailed attribute definitions",
+                        "Shows high-level business concepts and relationships",
+                        "Includes physical implementation details",
+                        "Specifies database table structures"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 129 of DMBOK2."
+                },
+                {
+                    question: "Normalization in data modeling aims to:",
+                    type: "multi-select",
+                    answers: [
+                        "Eliminate data redundancy",
+                        "Ensure data integrity",
+                        "Improve performance",
+                        "Reduce storage requirements",
+                        "All of the above except performance"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 140 of DMBOK2."
+                }
+            ],
+            "Chapter 6: Data Storage and Operations": [
+                {
+                    question: "Data storage and operations includes the design, implementation and support of stored data, to maximize its value throughout its lifecycle.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 177 of DMBOK2."
+                },
+                {
+                    question: "Database management activities include:",
+                    type: "multi-select",
+                    answers: [
+                        "Performance monitoring",
+                        "Backup and recovery",
+                        "Security management",
+                        "Capacity planning",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 180 of DMBOK2."
+                },
+                {
+                    question: "Database backup strategies include:",
+                    type: "multi-select",
+                    answers: [
+                        "Full backups",
+                        "Incremental backups",
+                        "Differential backups",
+                        "Transaction log backups",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 185 of DMBOK2."
+                },
+                {
+                    question: "Database performance tuning involves:",
+                    type: "multi-select",
+                    answers: [
+                        "Index optimization",
+                        "Query optimization",
+                        "Storage optimization",
+                        "Memory management",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 190 of DMBOK2."
+                }
+            ],
+            "Chapter 7: Data Security": [
+                {
+                    question: "Data security ensures that data privacy and confidentiality are maintained, that data is not breached, and that data is accessed appropriately.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 223 of DMBOK2."
+                },
+                {
+                    question: "The CIA triad in data security stands for:",
+                    type: "multi-select",
+                    answers: [
+                        "Confidentiality",
+                        "Integrity",
+                        "Availability",
+                        "Authentication",
+                        "Authorization"
+                    ],
+                    correct: [0,1,2],
+                    explanation: "Please refer to page 224 of DMBOK2."
+                },
+                {
+                    question: "Access control methods include:",
+                    type: "multi-select",
+                    answers: [
+                        "Role-based access control (RBAC)",
+                        "Attribute-based access control (ABAC)",
+                        "Mandatory access control (MAC)",
+                        "Discretionary access control (DAC)",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 235 of DMBOK2."
+                },
+                {
+                    question: "Data encryption can be applied at:",
+                    type: "multi-select",
+                    answers: [
+                        "Data at rest",
+                        "Data in transit",
+                        "Data in use",
+                        "Database level",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 240 of DMBOK2."
+                },
+                {
+                    question: "Data loss prevention (DLP) tools help:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Prevent unauthorized data access",
+                        "Monitor and prevent data exfiltration",
+                        "Encrypt sensitive data",
+                        "Backup critical data"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 245 of DMBOK2."
+                },
+                {
+                    question: "Security audit activities include:",
+                    type: "multi-select",
+                    answers: [
+                        "Access log review",
+                        "Vulnerability assessments",
+                        "Penetration testing",
+                        "Compliance validation",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 250 of DMBOK2."
+                },
+                {
+                    question: "Data privacy regulations include:",
+                    type: "multi-select",
+                    answers: [
+                        "GDPR (General Data Protection Regulation)",
+                        "CCPA (California Consumer Privacy Act)",
+                        "PIPEDA (Personal Information Protection and Electronic Documents Act)",
+                        "HIPAA (Health Insurance Portability and Accountability Act)",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 255 of DMBOK2."
+                },
+                {
+                    question: "Incident response planning should include:",
+                    type: "multi-select",
+                    answers: [
+                        "Detection procedures",
+                        "Response team roles",
+                        "Communication protocols",
+                        "Recovery procedures",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 260 of DMBOK2."
+                },
+                {
+                    question: "Data classification schemes help:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Determine appropriate security controls",
+                        "Improve data quality",
+                        "Reduce storage costs",
+                        "Increase processing speed"
+                    ],
+                    correct: [0],
+                    explanation: "Please refer to page 230 of DMBOK2."
+                }
+            ],
+            "Chapter 8: Data Integration and Interoperability": [
+                {
+                    question: "Data integration involves combining data from different sources to provide users with a unified view.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 267 of DMBOK2."
+                },
+                {
+                    question: "Common data integration approaches include:",
+                    type: "multi-select",
+                    answers: [
+                        "ETL (Extract, Transform, Load)",
+                        "ELT (Extract, Load, Transform)",
+                        "Data virtualization",
+                        "Data replication",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 270 of DMBOK2."
+                },
+                {
+                    question: "Data integration challenges include:",
+                    type: "multi-select",
+                    answers: [
+                        "Data format differences",
+                        "Semantic inconsistencies",
+                        "Data quality issues",
+                        "Performance bottlenecks",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 275 of DMBOK2."
+                },
+                {
+                    question: "Master data integration patterns include:",
+                    type: "multi-select",
+                    answers: [
+                        "Registry style",
+                        "Repository style",
+                        "Hybrid style",
+                        "Transactional style",
+                        "All of the above except transactional"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 280 of DMBOK2."
+                },
+                {
+                    question: "Data lineage tracking provides:",
+                    type: "multi-select",
+                    answers: [
+                        "Source-to-target mapping",
+                        "Transformation logic",
+                        "Data flow visualization",
+                        "Impact analysis",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 285 of DMBOK2."
+                },
+                {
+                    question: "Real-time data integration requires:",
+                    type: "multi-select",
+                    answers: [
+                        "Change data capture (CDC)",
+                        "Message queuing systems",
+                        "Event-driven architecture",
+                        "Stream processing",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 290 of DMBOK2."
+                },
+                {
+                    question: "Data service architecture benefits include:",
+                    type: "multi-select",
+                    answers: [
+                        "Reusability",
+                        "Loose coupling",
+                        "Scalability",
+                        "Agility",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 295 of DMBOK2."
+                },
+                {
+                    question: "API management for data services includes:",
+                    type: "multi-select",
+                    answers: [
+                        "API design and documentation",
+                        "Security and access control",
+                        "Performance monitoring",
+                        "Version management",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 300 of DMBOK2."
+                },
+                {
+                    question: "Data federation allows:",
+                    type: "multiple-choice",
+                    answers: [
+                        "Physical consolidation of data",
+                        "Virtual integration without moving data",
+                        "Permanent data storage",
+                        "Data compression"
+                    ],
+                    correct: [1],
+                    explanation: "Please refer to page 305 of DMBOK2."
+                }
+            ],
+            "Chapter 9: Document and Content Management": [
+                {
+                    question: "Document and content management controls the capture, storage, access, and use of data and information stored outside of databases.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 321 of DMBOK2."
+                },
+                {
+                    question: "Key components of content management include:",
+                    type: "multi-select",
+                    answers: [
+                        "Content creation",
+                        "Content organization",
+                        "Content retrieval",
+                        "Content preservation",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 322 of DMBOK2."
+                },
+                {
+                    question: "Document lifecycle stages include:",
+                    type: "multi-select",
+                    answers: [
+                        "Creation",
+                        "Review and approval",
+                        "Publication",
+                        "Retention",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 325 of DMBOK2."
+                },
+                {
+                    question: "Content metadata typically includes:",
+                    type: "multi-select",
+                    answers: [
+                        "Title and description",
+                        "Author and creation date",
+                        "Subject and keywords",
+                        "Format and size",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 328 of DMBOK2."
+                },
+                {
+                    question: "Digital asset management systems provide:",
+                    type: "multi-select",
+                    answers: [
+                        "Centralized storage",
+                        "Metadata management",
+                        "Version control",
+                        "Access control",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 330 of DMBOK2."
+                },
+                {
+                    question: "Records management includes:",
+                    type: "multi-select",
+                    answers: [
+                        "Classification schemes",
+                        "Retention schedules",
+                        "Disposition procedures",
+                        "Legal hold management",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 335 of DMBOK2."
+                },
+                {
+                    question: "Email management challenges include:",
+                    type: "multi-select",
+                    answers: [
+                        "Volume and growth",
+                        "Storage costs",
+                        "Legal and compliance requirements",
+                        "Information governance",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 338 of DMBOK2."
+                },
+                {
+                    question: "Web content management features include:",
+                    type: "multi-select",
+                    answers: [
+                        "Content authoring tools",
+                        "Workflow management",
+                        "Template management",
+                        "Multi-site publishing",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 340 of DMBOK2."
+                },
+                {
+                    question: "Content archiving strategies should consider:",
+                    type: "multi-select",
+                    answers: [
+                        "Legal and regulatory requirements",
+                        "Business value and usage patterns",
+                        "Technical migration needs",
+                        "Cost and storage considerations",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 342 of DMBOK2."
+                }
+            ],
+            "Chapter 10: Reference and Master Data": [
+                {
+                    question: "Master data represents the critical nouns of a business and can be defined as the consistent and uniform set of identifiers and extended attributes.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 347 of DMBOK2."
+                },
+                {
+                    question: "Types of reference data include:",
+                    type: "multi-select",
+                    answers: [
+                        "Code sets",
+                        "Lookup tables",
+                        "Valid values",
+                        "Classification schemes",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 348 of DMBOK2."
+                }
+            ],
+            "Chapter 11: Data Warehousing and Business Intelligence": [
+                {
+                    question: "A data warehouse is a copy of transaction data specifically structured for query and analysis.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 389 of DMBOK2."
+                },
+                {
+                    question: "Key characteristics of a data warehouse include:",
+                    type: "multi-select",
+                    answers: [
+                        "Subject-oriented",
+                        "Integrated",
+                        "Time-variant",
+                        "Non-volatile",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 390 of DMBOK2."
+                }
+            ],
+            "Chapter 12: Metadata Management": [
+                {
+                    question: "Metadata is data about data. It describes the characteristics of data and provides context that makes data meaningful.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 431 of DMBOK2."
+                },
+                {
+                    question: "Types of metadata include:",
+                    type: "multi-select",
+                    answers: [
+                        "Technical metadata",
+                        "Business metadata",
+                        "Process metadata",
+                        "Operational metadata",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 432 of DMBOK2."
+                }
+            ],
+            "Chapter 13: Data Quality": [
+                {
+                    question: "Data quality refers to the state of qualitative or quantitative pieces of information.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 467 of DMBOK2."
+                },
+                {
+                    question: "Common data quality dimensions include:",
+                    type: "multi-select",
+                    answers: [
+                        "Completeness",
+                        "Uniqueness",
+                        "Timeliness",
+                        "Validity",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 468 of DMBOK2."
+                }
+            ],
+            "Chapter 14: Big Data and Data Science": [
+                {
+                    question: "Big data is characterized by the three Vs: Volume, Velocity, and Variety.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 515 of DMBOK2."
+                },
+                {
+                    question: "Data science activities include:",
+                    type: "multi-select",
+                    answers: [
+                        "Data exploration",
+                        "Model development",
+                        "Model validation",
+                        "Model deployment",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 520 of DMBOK2."
+                }
+            ],
+            "Chapter 15: Data Management Maturity Assessment": [
+                {
+                    question: "Data management maturity assessment helps organizations understand their current data management capabilities and identify areas for improvement.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 559 of DMBOK2."
+                },
+                {
+                    question: "Maturity models typically include levels such as:",
+                    type: "multi-select",
+                    answers: [
+                        "Initial",
+                        "Developing",
+                        "Defined",
+                        "Managed",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 560 of DMBOK2."
+                }
+            ],
+            "Chapter 16: Data Management Organization and Role Expectations": [
+                {
+                    question: "Successful data management requires people with different skills working together in defined roles with clear responsibilities.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 579 of DMBOK2."
+                },
+                {
+                    question: "Key data management roles include:",
+                    type: "multi-select",
+                    answers: [
+                        "Data Steward",
+                        "Data Architect",
+                        "Database Administrator",
+                        "Data Analyst",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 580 of DMBOK2."
+                }
+            ],
+            "Chapter 17: Data Management and Organizational Change Management": [
+                {
+                    question: "Organizational change management is critical for successful data management initiatives.",
+                    type: "multiple-choice",
+                    answers: ["True", "False"],
+                    correct: [0],
+                    explanation: "Please refer to page 607 of DMBOK2."
+                },
+                {
+                    question: "Key elements of change management include:",
+                    type: "multi-select",
+                    answers: [
+                        "Communication",
+                        "Training",
+                        "Leadership support",
+                        "Cultural change",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 608 of DMBOK2."
+                },
+                {
+                    question: "Resistance to change in data management initiatives often comes from:",
+                    type: "multi-select",
+                    answers: [
+                        "Fear of job loss",
+                        "Comfort with current processes",
+                        "Lack of understanding of benefits",
+                        "Technical complexity",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 610 of DMBOK2."
+                },
+                {
+                    question: "Success factors for data management change include:",
+                    type: "multi-select",
+                    answers: [
+                        "Executive sponsorship",
+                        "Clear communication",
+                        "Adequate training",
+                        "Phased implementation",
+                        "All of the above"
+                    ],
+                    correct: [4],
+                    explanation: "Please refer to page 612 of DMBOK2."
+                }
+            ]
+        };

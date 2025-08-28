@@ -1,0 +1,28 @@
+{
+  "name": "cdmp-exam-app",
+  "version": "1.0.0",
+  "description": "CDMP (Certified Data Management Professional) Exam Study Application",
+  "main": "main.html",
+  "scripts": {
+    "dev": "python -m http.server 8080",
+    "build": "echo 'Static site - no build required'",
+    "start": "python -m http.server 8080"
+  },
+  "keywords": [
+    "cdmp",
+    "exam",
+    "study",
+    "dmbok2",
+    "data-management"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/cdmp-exam-app.git"
+  },
+  "homepage": "https://cdmp.riptonic.com",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

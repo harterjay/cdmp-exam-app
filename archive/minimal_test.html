@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Minimal Test</title>
+    <style>
+        .chapter-item {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Minimal Test</h1>
+    <div id="output">Loading...</div>
+    <div id="chapterGrid"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+    <script>
+        let examData = {};
+        
+        async function loadData() {
+            try {
+                document.getElementById('output').innerHTML = 'Loading SQL.js...';
+                
+                const SQL = await initSqlJs({
+                    locateFile: file => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/${file}`
+                });
+                
+                document.getElementById('output').innerHTML = 'Loading database...';
+                const response = await fetch('cdmp_questions_full_exam_clean.db');
+                const dbBuffer = await response.arrayBuffer();
+                const db = new SQL.Database(new Uint8Array(dbBuffer));
+                
+                document.getElementById('output').innerHTML = 'Processing questions...';
+                const stmt = db.prepare('SELECT question, knowledge_area FROM questions ORDER BY knowledge_area LIMIT 20');
+                
+                while (stmt.step()) {
+                    const row = stmt.getAsObject();
+                    const area = row.knowledge_area;
+                    
+                    if (!examData[area]) {
+                        examData[area] = [];
+                    }
+                    examData[area].push({ question: row.question });
+                }
+                
+                stmt.free();
+                db.close();
+                
+                document.getElementById('output').innerHTML = 'Data loaded. Areas: ' + Object.keys(examData).length;
+                populateGrid();
+                
+            } catch (error) {
+                document.getElementById('output').innerHTML = 'Error: ' + error.message;
+                console.error(error);
+            }
+        }
+        
+        function populateGrid() {
+            console.log('populateGrid called with keys:', Object.keys(examData));
+            const grid = document.getElementById('chapterGrid');
+            
+            Object.keys(examData).forEach(area => {
+                const div = document.createElement('div');
+                div.className = 'chapter-item';
+                div.innerHTML = `<strong>${area}</strong><br>${examData[area].length} questions`;
+                grid.appendChild(div);
+            });
+        }
+        
+        loadData();
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDMP Exam Study App - Minimal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .setup-section {
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .chapter-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .chapter-item {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .chapter-item:hover {
+            border-color: #667eea;
+            background: #f0f7ff;
+        }
+
+        .chapter-item.selected {
+            border-color: #667eea;
+            background: #e3f2fd;
+        }
+
+        .chapter-item input[type="checkbox"] {
+            margin-right: 10px;
+            transform: scale(1.2);
+        }
+
+        .chapter-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .chapter-count {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .start-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            width: 100%;
+        }
+
+        .start-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .start-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        button {
+            margin: 10px 5px;
+            padding: 8px 16px;
+            background: #6c757d;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>CDMP Exam Study App</h1>
+            <p>Master the DMBOK2 with interactive practice questions</p>
+        </div>
+
+        <div class="main-content">
+            <div class="setup-section" id="setup">
+                <div class="form-group">
+                    <label>Select Chapters to Study:</label>
+                    <div class="chapter-grid" id="chapterGrid">
+                        <!-- Chapters will be populated by JavaScript -->
+                    </div>
+                    <button type="button" id="selectAllBtn">Select All</button>
+                    <button type="button" id="deselectAllBtn">Deselect All</button>
+                </div>
+
+                <button class="start-btn" id="startBtn" disabled>Start Quiz</button>
+                <div id="status" style="margin-top: 20px; padding: 10px; background: #f0f0f0; border-radius: 4px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        console.log("Script starting...");
+
+        // Minimal test data - just 3 chapters
+        const examData = {
+            "Chapter 1: Data Management": [
+                { question: "Test question 1", type: "multiple-choice", answers: ["A", "B"], correct: [0], explanation: "Test" },
+                { question: "Test question 2", type: "multiple-choice", answers: ["A", "B"], correct: [1], explanation: "Test" }
+            ],
+            "Chapter 2: Data Handling Ethics": [
+                { question: "Test question 3", type: "multiple-choice", answers: ["A", "B"], correct: [0], explanation: "Test" },
+                { question: "Test question 4", type: "multiple-choice", answers: ["A", "B"], correct: [1], explanation: "Test" }
+            ],
+            "Chapter 3: Data Governance": [
+                { question: "Test question 5", type: "multiple-choice", answers: ["A", "B"], correct: [0], explanation: "Test" },
+                { question: "Test question 6", type: "multiple-choice", answers: ["A", "B"], correct: [1], explanation: "Test" }
+            ]
+        };
+
+        function updateStatus(message) {
+            document.getElementById('status').textContent = message;
+            console.log(message);
+        }
+
+        function populateChapters() {
+            updateStatus("populateChapters called");
+            const grid = document.getElementById('chapterGrid');
+            
+            if (!grid) {
+                updateStatus("ERROR: Grid element not found!");
+                return;
+            }
+            
+            grid.innerHTML = '';
+            updateStatus("Grid cleared, creating chapters...");
+
+            try {
+                Object.keys(examData).forEach((chapter, index) => {
+                    updateStatus(`Creating chapter: ${chapter}`);
+                    const questionCount = examData[chapter].length;
+                    const div = document.createElement('div');
+                    div.className = 'chapter-item';
+                    
+                    const checkbox = document.createElement('input');
+                    checkbox.type = 'checkbox';
+                    checkbox.id = `chapter-${index}`;
+                    
+                    const titleDiv = document.createElement('div');
+                    titleDiv.className = 'chapter-title';
+                    titleDiv.textContent = chapter;
+                    
+                    const countDiv = document.createElement('div');
+                    countDiv.className = 'chapter-count';
+                    countDiv.textContent = `${questionCount} questions`;
+                    
+                    div.appendChild(checkbox);
+                    div.appendChild(titleDiv);
+                    div.appendChild(countDiv);
+                    
+                    div.addEventListener('click', (e) => {
+                        if (e.target !== checkbox) {
+                            checkbox.checked = !checkbox.checked;
+                        }
+                        div.classList.toggle('selected', checkbox.checked);
+                        updateStartButton();
+                    });
+
+                    grid.appendChild(div);
+                });
+                
+                updateStatus("All chapters created successfully!");
+                
+            } catch (error) {
+                updateStatus("ERROR in populateChapters: " + error.message);
+                console.error("Error details:", error);
+            }
+        }
+
+        function updateStartButton() {
+            const selectedChapters = document.querySelectorAll('#chapterGrid input[type="checkbox"]:checked');
+            const startBtn = document.getElementById('startBtn');
+            startBtn.disabled = selectedChapters.length === 0;
+        }
+
+        function selectAllChapters() {
+            const checkboxes = document.querySelectorAll('#chapterGrid input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = true;
+                checkbox.closest('.chapter-item').classList.add('selected');
+            });
+            updateStartButton();
+            updateStatus("All chapters selected");
+        }
+
+        function deselectAllChapters() {
+            const checkboxes = document.querySelectorAll('#chapterGrid input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.closest('.chapter-item').classList.remove('selected');
+            });
+            updateStartButton();
+            updateStatus("All chapters deselected");
+        }
+
+        function setupEventListeners() {
+            updateStatus("Setting up event listeners...");
+            
+            document.getElementById('selectAllBtn').addEventListener('click', selectAllChapters);
+            document.getElementById('deselectAllBtn').addEventListener('click', deselectAllChapters);
+            
+            document.getElementById('startBtn').addEventListener('click', () => {
+                const selected = document.querySelectorAll('#chapterGrid input[type="checkbox"]:checked').length;
+                alert(`Would start quiz with ${selected} chapters selected!`);
+            });
+            
+            updateStatus("Event listeners set up");
+        }
+
+        function initApp() {
+            updateStatus("initApp called");
+            populateChapters();
+            setupEventListeners();
+        }
+
+        // Initialize when page loads
+        window.onload = function() {
+            updateStatus("Page loaded, initializing app...");
+            initApp();
+        };
+        
+        updateStatus("Script loaded");
+    </script>
+</body>
+</html>

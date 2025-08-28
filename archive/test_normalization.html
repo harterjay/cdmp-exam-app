@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Normalization</title>
+</head>
+<body>
+    <h1>Knowledge Area Normalization Test</h1>
+    <div id="output"></div>
+
+    <script>
+        // Normalize knowledge area names to handle duplicates/variations
+        function normalizeKnowledgeArea(area) {
+            // Convert to standard format and handle known duplicates
+            const normalized = area.toLowerCase().trim();
+            
+            // Handle Data Warehousing/Warehouse variations
+            if (normalized.includes('data warehouse') || normalized.includes('data warehousing')) {
+                return 'Data Warehousing and Business Intelligence';
+            }
+            
+            // Handle Data Quality variations (both "Data quality" and "Data Quality")
+            if (normalized === 'data quality') {
+                return 'Data Quality';
+            }
+            
+            // For all other cases, use title case
+            return area.split(' ').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+            ).join(' ');
+        }
+
+        const testAreas = [
+            'Data Warehousing and Business Intelligence',
+            'Data warehouse and business intelligence', 
+            'Data quality',
+            'Data Quality',
+            'big data and data science',
+            'Big Data and Data Science'
+        ];
+
+        let output = '<h2>Normalization Results:</h2><ul>';
+        testAreas.forEach(area => {
+            const normalized = normalizeKnowledgeArea(area);
+            output += `<li><strong>"${area}"</strong> → <strong>"${normalized}"</strong></li>`;
+        });
+        output += '</ul>';
+
+        document.getElementById('output').innerHTML = output;
+    </script>
+</body>
+</html>
